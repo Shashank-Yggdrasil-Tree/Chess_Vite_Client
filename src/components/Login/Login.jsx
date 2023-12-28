@@ -11,60 +11,21 @@ import {
   setPlayers,
   setUsername,
 } from "../../features/gameSlice/gameSlice.jsx";
+import { setIsLoggedIn } from "../../features/loginSlice/loginSlice.jsx";
 
 const Login = () => {
-  const [isFocused, setIsFocused] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [enterUsername, setEnterUsername] = useState(false);
-  // const [username, setUsername] = useState("");
-  // const [usernameSubmitted, setUsernameSubmitted] = useState(false);
-
-  // const room = useSelector((state) => state.game.room);
-  // const orientation = useSelector((state) => state.game.orientation);
-  // const players = useSelector((state) => state.game.players);
   const username = useSelector((state) => state.game.username);
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+
   const dispatch = useDispatch();
 
-  const cleanup = useCallback(() => {
-    dispatch(setRoom(""));
-    dispatch(setOrientation(""));
-    dispatch(setPlayers([]));
-  }, []);
-
   useEffect(() => {
-    // const username = prompt("Username");
-    // setUsername(username);
-    // socket.emit("username", username);
-
     socket.on("opponentJoined", (roomData) => {
       console.log("roomData", roomData);
       dispatch(setPlayers(roomData.players));
     });
   }, []);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
-  //   {room ? (
-  //     <Game
-  //       room={room}
-  //       orientation={orientation}
-  //       username={username}
-  //       players={players}
-  //       cleanup={cleanup}
-  //     />
-  //   ) : (
-  //     <InitGame
-  //       setRoom={setRoom}
-  //       setOrientation={setOrientation}
-  //       setPlayers={setPlayers}
-  //     />
-  //   )}
 
   return (
     <>
@@ -80,14 +41,13 @@ const Login = () => {
               handleContinue={() => {
                 if (!username) return;
                 socket.emit("username", username);
-                setIsLoggedIn(true);
+                dispatch(setIsLoggedIn(true));
               }}
             >
               <TextField
                 InputProps={{
                   style: {
                     backgroundColor: "transparent",
-                    border: isFocused ? "none" : "solid 1px white",
                     caretColor: "white",
                     color: "white",
                   },
@@ -98,8 +58,6 @@ const Login = () => {
                   },
                 }}
                 autoFocus
-                onFocus={handleFocus}
-                onBlur={handleBlur}
                 margin="dense"
                 id="username"
                 label="Username"

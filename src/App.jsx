@@ -1,8 +1,6 @@
 import { Box, CssBaseline } from "@mui/material";
-import Game from "./Game";
 import { useEffect } from "react";
 import socket from "./socket.jsx";
-import { Chessboard } from "react-chessboard";
 import Layout from "./components/Layout/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { setPlayers } from "./features/gameSlice/gameSlice.jsx";
@@ -22,8 +20,6 @@ const ProtectedRoute = ({ isLoggedIn, children }) => {
 };
 
 export default function App() {
-  const room = useSelector((state) => state.game.room);
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
 
   useEffect(() => {

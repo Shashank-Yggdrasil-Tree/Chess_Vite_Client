@@ -39,14 +39,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route
-              path="stockstock"
-              element={
-                <StockfishVsStockfish />
-                // <ProtectedRoute isLoggedIn={isLoggedIn}>
-                // </ProtectedRoute>
-              }
-            />
+            <Route path="stockstock" element={<StockfishVsStockfish />} />
             <Route path="playvcomp" element={<PlayWithComputer />} />
             <Route path="playvfriend" element={<PlayWithFriend />} />
             <Route path="styled" element={<StyledChessBoard />} />

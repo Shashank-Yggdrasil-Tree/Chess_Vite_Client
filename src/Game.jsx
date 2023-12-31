@@ -13,6 +13,7 @@ import {
   Stack,
   Typography,
   Box,
+  Divider,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -130,7 +131,7 @@ function Game() {
           <Typography variant="h5">Room ID: {room}</Typography>
         </CardContent>
       </Card>
-      <Stack flexDirection="row" sx={{ pt: 2 }}>
+      <Stack flexDirection="column" sx={{ pt: 2 }}>
         <ResponsiveChessBoard
           id="pvfchessboard"
           position={fen}
@@ -142,7 +143,7 @@ function Game() {
             <List>
               <ListSubheader>Players</ListSubheader>
               {players.map((p) => (
-                <ListItem key={p.id}>
+                <ListItem key={p.id} className="text-white">
                   <ListItemText primary={p.username} />
                 </ListItem>
               ))}

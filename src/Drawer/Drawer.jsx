@@ -68,37 +68,26 @@ function ResponsiveDrawer(props) {
   const mobile_drawer = (
     <div>
       <List className="h-dhv my-5 overflow-y-scroll">
-        {[
-          "Inbox",
-          "Starred",
-          "Send email",
-          "Drafts",
-          "Home",
-          "Insipiration",
-          "RoadMap",
-          "Concept",
-          "Design",
-          "Double Hill",
-          "Inside the eart",
-          "Operation Mode",
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              {/* <ListItemIcon>
+        {stockfishNavList.map(({ name, link }, index) => (
+          <ListItem key={index} disablePadding>
+            <Link to={link}>
+              <ListItemButton>
+                {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
-              <ListItemText
-                disableTypography
-                primary={
-                  <Typography
-                    variant="h2"
-                    className="underline-animation text-sm font-medium font-barlow leading-[1rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
-                  >
-                    {text}
-                  </Typography>
-                }
-              />
-            </ListItemButton>
+                <ListItemText
+                  disableTypography
+                  primary={
+                    <Typography
+                      variant="h2"
+                      className="underline-animation text-sm font-medium font-barlow leading-[1rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
+                    >
+                      {name}
+                    </Typography>
+                  }
+                />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>

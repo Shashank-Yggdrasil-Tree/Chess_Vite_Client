@@ -12,6 +12,9 @@ export default {
         "hero-pattern": "url('/svg_background/spring_black.svg')",
         // "hero-pattern": "url('/svg_background/clouds.svg')",
       },
+      fontFamily: {
+        barlow: ["Barlow SemiBold", "Helvetica", "Arial", "sans-serif"],
+      },
     },
   },
   plugins: [],

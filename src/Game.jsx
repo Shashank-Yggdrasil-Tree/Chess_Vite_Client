@@ -20,6 +20,7 @@ import {
   setOrientation,
   setPlayers,
 } from "./features/gameSlice/gameSlice.jsx";
+import ResponsiveChessBoard from "./components/ResponsiveChessBoard/ResponsiveChessBoard.jsx";
 
 function Game() {
   const room = useSelector((state) => state.game.room);
@@ -130,20 +131,12 @@ function Game() {
         </CardContent>
       </Card>
       <Stack flexDirection="row" sx={{ pt: 2 }}>
-        <div
-          className="board"
-          style={{
-            maxWidth: 600,
-            maxHeight: 600,
-            flexGrow: 1,
-          }}
-        >
-          <Chessboard
-            position={fen}
-            onPieceDrop={onDrop}
-            boardOrientation={orientation}
-          />
-        </div>
+        <ResponsiveChessBoard
+          id="pvfchessboard"
+          position={fen}
+          onPieceDrop={onDrop}
+          boardOrientation={orientation}
+        />
         {players.length > 0 && (
           <Box>
             <List>

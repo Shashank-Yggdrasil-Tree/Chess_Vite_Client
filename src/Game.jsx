@@ -106,6 +106,7 @@ function Game() {
 
   useEffect(() => {
     socket.on("move", (move) => {
+      console.log(move);
       makeAMove(move); //
     });
   }, [makeAMove]);

@@ -6,12 +6,11 @@ import socket from "../../socket.jsx";
 import InitGame from "../InitGame/InitGame.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setRoom,
-  setOrientation,
   setPlayers,
   setUsername,
 } from "../../features/gameSlice/gameSlice.jsx";
 import { setIsLoggedIn } from "../../features/loginSlice/loginSlice.jsx";
+import CommonBoxWrapper from "../CommonBoxWrapper/commonBoxWrapper.jsx";
 
 const Login = () => {
   const [enterUsername, setEnterUsername] = useState(false);
@@ -28,7 +27,10 @@ const Login = () => {
   }, []);
 
   return (
-    <>
+    <CommonBoxWrapper
+      additional_class="h-48 relative0"
+      border_color="border-2 border-zinc-800 hover:border-violet-800"
+    >
       {isLoggedIn ? (
         <InitGame />
       ) : (
@@ -88,7 +90,7 @@ const Login = () => {
           boxHeight = "h-32", */}
         </Box>
       )}
-    </>
+    </CommonBoxWrapper>
   );
 };
 

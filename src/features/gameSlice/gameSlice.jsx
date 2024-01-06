@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  room: "",
+  room: "", // it's just the room ID.
   orientation: "",
-  players: [],
+  players: [], //has objects with player_id and username
   username: "",
 };
 

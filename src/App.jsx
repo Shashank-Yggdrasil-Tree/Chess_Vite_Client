@@ -11,6 +11,7 @@ import PlayWithFriend from "./components/PlayWithFriend/PlayWithFriend.jsx";
 import StyledChessBoard from "./components/StyledChessBoard/StyledChessBoard.jsx";
 import ChessBoard3D from "./components/ChessBoard3D/ChessBoard3D.jsx";
 import AnalysisBoard from "./components/AnalysisBoard/AnalysisBoard.jsx";
+import Glassmorphism from "./components/Glassmorphism/Glassmorphism.jsx";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
   if (!isLoggedIn) {
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="styled" element={<StyledChessBoard />} />
             <Route path="ChessBoard3D" element={<ChessBoard3D />} />
             <Route path="analysis" element={<AnalysisBoard />} />
+            <Route path="glassmorphism" element={<Glassmorphism />} />
           </Route>
         </Routes>
       </BrowserRouter>

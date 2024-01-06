@@ -15,7 +15,7 @@ const Layout = () => {
 
   return (
     <Stack className="bg-hero-pattern bg-no-repeat bg-center bg-cover h-screen w-screen">
-      <Box className="flex h-full w-full divide-x divide-zinc-800 ">
+      <Box className="flex h-full w-full ">
         <Box className="flex-none md:flex-1">
           <ResponsiveDrawer />
         </Box>
@@ -24,16 +24,16 @@ const Layout = () => {
           {/* {children} */}
         </Box>
         {location === "/playvfriend" ? (
-          <Stack className="flex-1 divide-y divide-zinc-800">
+          <Stack className="flex-1">
             <Box>
               <Login />
             </Box>
-            <Box>
+            <Box className="h-full w-full">
               <ChatWindow />
             </Box>
           </Stack>
         ) : (
-          <Stack className="flex-1 divide-y divide-zinc-800"></Stack>
+          <Stack className="flex-1"></Stack>
         )}
       </Box>
     </Stack>

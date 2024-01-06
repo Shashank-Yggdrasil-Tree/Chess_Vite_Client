@@ -10,6 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import CommonBoxWrapper from "../components/CommonBoxWrapper/commonBoxWrapper";
 
 const drawerWidth = 240;
 
@@ -33,25 +34,25 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <List className="lg:h-[32rem] md:h-[20rem] overflow-y-scroll scrollbar-effect divide-y divide-zinc-800">
+      <List className="lg:h-[32rem] md:h-[20rem] overflow-y-scroll overflow-x-hidden scrollbar-effect divide-y divide-zinc-800">
         {stockfishNavList.map(({ name, link }, index) => (
           <ListItem
             key={index}
-            className="bg-[#26262680] flex justify-center"
+            className="bg-[#26262680]transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-300"
             disablePadding
           >
-            <Link to={link}>
+            <Link to={link} className="w-full">
               <ListItemButton>
                 {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
                 <ListItemText
                   disableTypography
-                  className="opacity-70 hover:opacity-100 transition-opacity duration-100 lg:my-3 md:my-2"
+                  className="flex justify-center opacity-70 hover:opacity-100 transition-opacity duration-100 lg:my-3 md:my-2"
                   primary={
                     <Typography
                       variant="h2"
-                      className="underline-animation lg:text-3xl hover:lg:text-4xl hover:transition-transform duration-300 sm:text-sm  md:text-md font-medium font-barlow leading-[4rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
+                      className="underline-animation lg:text-3xl duration-300 sm:text-sm  md:text-md font-medium font-barlow leading-[4rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
                     >
                       {name}
                     </Typography>
@@ -98,7 +99,7 @@ function ResponsiveDrawer(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box className="w-full h-full">
+    <CommonBoxWrapper additional_class="w-full h-full">
       <CssBaseline />
 
       <IconButton
@@ -153,7 +154,7 @@ function ResponsiveDrawer(props) {
           {mobile_drawer}
         </Drawer>
       </Box>
-    </Box>
+    </CommonBoxWrapper>
   );
 }
 

@@ -20,7 +20,7 @@ function InitGame() {
     <Stack
       justifyContent="center"
       alignItems="center"
-      className="h-48"
+      className="h-full"
       sx={{ py: 1 }}
     >
       <CustomDialog
@@ -35,6 +35,8 @@ function InitGame() {
             // r is the response from the server
             if (r.error) return setRoomError(r.message); // if an error is returned in the response set roomError to the error message and exit
             console.log("response:", r);
+            console.log("setRoom:", r?.roomId);
+            console.log("setPlayers:", r?.players);
             dispatch(setRoom(r?.roomId));
             dispatch(setPlayers(r?.players));
             dispatch(setOrientation("black"));

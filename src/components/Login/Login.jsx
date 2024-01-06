@@ -80,14 +80,6 @@ const Login = () => {
               </CustomButton>
             </Box>
           )}
-
-          {/* visible,
-          children,
-          handleHideBox,
-          title,
-          contentText,
-          handleContinue,
-          boxHeight = "h-32", */}
         </Box>
       )}
     </CommonBoxWrapper>

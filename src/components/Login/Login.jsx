@@ -10,7 +10,7 @@ import {
   setUsername,
 } from "../../features/gameSlice/gameSlice.jsx";
 import { setIsLoggedIn } from "../../features/loginSlice/loginSlice.jsx";
-import CommonBoxWrapper from "../CommonBoxWrapper/commonBoxWrapper.jsx";
+import CommonBoxWrapper from "../CommonBoxWrapper/commonBoxWrapper";
 
 const Login = () => {
   const [enterUsername, setEnterUsername] = useState(false);

@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <CommonBoxWrapper
-      additional_class="h-48 relative0"
+      additional_class="h-48 relative"
       border_color="border-2 border-zinc-800 hover:border-violet-800"
     >
       {isLoggedIn ? (
@@ -68,6 +68,7 @@ const Login = () => {
                 name="username"
                 value={username}
                 required
+                onKeyDown={() => setEnterUsername(true)}
                 onChange={(e) => dispatch(setUsername(e.target.value))} // update username state with value
                 type="text"
                 fullWidth

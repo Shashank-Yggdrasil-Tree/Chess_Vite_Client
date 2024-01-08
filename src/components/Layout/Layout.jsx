@@ -3,7 +3,7 @@ import React from "react";
 import Login from "../Login/Login";
 import ChatWindow from "../ChatWindow/ChatWindow";
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import ResponsiveDrawer from "../../Drawer/Drawer";
+import ResponsiveDrawer from "../Drawer/Drawer";
 
 // chosen background colors
 // bg-gradient-to-b from-gray-900 via-purple-900 to-violet-600

@@ -1,4 +1,4 @@
-import { Button, Stack, TextField } from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import CustomDialog from "../CustomDialog/CustomDialog";
 import socket from "../../socket";
@@ -8,6 +8,9 @@ import {
   setOrientation,
   setPlayers,
 } from "../../features/gameSlice/gameSlice";
+import CustomButton from "../CustomButton/CustomButton";
+import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
+import { setIsLoggedIn } from "../../features/loginSlice/loginSlice.jsx";
 
 function InitGame() {
   const [roomDialogOpen, setRoomDialogOpen] = useState(false);
@@ -20,9 +23,20 @@ function InitGame() {
     <Stack
       justifyContent="center"
       alignItems="center"
-      className="h-full"
+      className="h-full relative"
       sx={{ py: 1 }}
     >
+      <TooltipWrapper helpText="Logout" placement="right">
+        <img
+          className="absolute top-0 left-0 w-8 m-2 cursor-pointer transition ease-in-out hover:scale-110 duration-150"
+          src="/svg_icons/logout.svg"
+          alt="Logout"
+          onClick={() => {
+            socket.emit("logout");
+            dispatch(setIsLoggedIn(false));
+          }}
+        />
+      </TooltipWrapper>
       <CustomDialog
         open={roomDialogOpen}
         handleClose={() => setRoomDialogOpen(false)}
@@ -66,9 +80,8 @@ function InitGame() {
         />
       </CustomDialog>
       {/* Button for starting a game */}
-      <Button
-        variant="contained"
-        onClick={() => {
+      <CustomButton
+        handleClick={() => {
           socket.emit("createRoom", (r) => {
             console.log(r);
             dispatch(setRoom(r));
@@ -77,9 +90,14 @@ function InitGame() {
         }}
       >
         Start a game
-      </Button>
+      </CustomButton>
       {/* Button for joining a game */}
-      <Button onClick={() => setRoomDialogOpen(true)}>Join a game</Button>
+      <a
+        onClick={() => setRoomDialogOpen(true)}
+        className="text-lg p-1 cursor-pointer font-semibold bg-gradient-to-r from-violet-500 to-fuchsia-600 inline-block text-transparent bg-clip-text hover:text-white transition ease-in-out hover:scale-110 duration-150"
+      >
+        JOIN A GAME
+      </a>
     </Stack>
   );
 }

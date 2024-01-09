@@ -1,7 +1,6 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
-import CustomDialog from "./components/CustomDialog/CustomDialog";
+import CustomDialog from "./components/CustomDialog/CustomDialog.jsx";
 import socket from "./socket";
 import {
   Card,

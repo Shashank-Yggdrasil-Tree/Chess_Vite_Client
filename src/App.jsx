@@ -4,14 +4,14 @@ import socket from "./socket.jsx";
 import Layout from "./components/Layout/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { setPlayers } from "./features/gameSlice/gameSlice.jsx";
-import { StockfishVsStockfish } from "./components/StockfishVsStockfish/StockfishVsStockfish.jsx";
+import { StockfishVsStockfish } from "./pages/StockfishVsStockfish/StockfishVsStockfish.jsx";
 import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
-import PlayWithComputer from "./components/PlayWithComputer/PlayWithComputer.jsx";
-import PlayWithFriend from "./components/PlayWithFriend/PlayWithFriend.jsx";
-import StyledChessBoard from "./components/StyledChessBoard/StyledChessBoard.jsx";
-import ChessBoard3D from "./components/ChessBoard3D/ChessBoard3D.jsx";
-import AnalysisBoard from "./components/AnalysisBoard/AnalysisBoard.jsx";
-import Glassmorphism from "./components/Glassmorphism/Glassmorphism.jsx";
+import PlayWithComputer from "./pages/PlayWithComputer/PlayWithComputer.jsx";
+import PlayWithFriend from "./pages/PlayWithFriend/PlayWithFriend.jsx";
+import StyledChessBoard from "./pages/StyledChessBoard/StyledChessBoard.jsx";
+import ChessBoard3D from "./pages/ChessBoard3D/ChessBoard3D.jsx";
+import AnalysisBoard from "./pages/AnalysisBoard/AnalysisBoard.jsx";
+import Glassmorphism from "./pages/Glassmorphism/Glassmorphism.jsx";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
   if (!isLoggedIn) {

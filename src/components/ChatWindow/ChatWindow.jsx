@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import CommonBoxWrapper from "../CommonBoxWrapper/CommonBoxWrapper";
+import CommonBoxWrapper from "../../common/CommonBoxWrapper/CommonBoxWrapper";
 import { Box, Button, Divider, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import socket from "../../socket";

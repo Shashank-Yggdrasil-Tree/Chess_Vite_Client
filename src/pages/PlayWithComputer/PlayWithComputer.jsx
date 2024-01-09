@@ -1,9 +1,9 @@
 import { Chess } from "chess.js";
 import { useMemo, useState } from "react";
-import ResponsiveChessBoard from "../ResponsiveChessBoard/ResponsiveChessBoard";
+import ResponsiveChessBoard from "../../components/ResponsiveChessBoard/ResponsiveChessBoard";
 import Engine from "../../Engine";
 import { Box } from "@mui/material";
-import ChessBoardButton from "../ChessBoardButton/ChessBoardButton";
+import ChessBoardButton from "../../components/ChessBoardButton/ChessBoardButton";
 
 const PlayWithComputer = () => {
   const levels = {

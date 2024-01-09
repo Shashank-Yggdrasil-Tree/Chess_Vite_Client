@@ -9,7 +9,7 @@ import {
   setPlayers,
 } from "../../features/gameSlice/gameSlice";
 import CustomButton from "../CustomButton/CustomButton";
-import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
+import TooltipWrapper from "../../common/TooltipWrapper/TooltipWrapper.jsx";
 import { setIsLoggedIn } from "../../features/loginSlice/loginSlice.jsx";
 
 function InitGame() {

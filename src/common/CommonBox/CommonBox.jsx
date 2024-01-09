@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import CustomButton from "../CustomButton/CustomButton";
+import CustomButton from "../../components/CustomButton/CustomButton";
 import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
 
 const CommonBox = ({

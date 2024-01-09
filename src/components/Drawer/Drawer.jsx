@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import CommonBoxWrapper from "../CommonBoxWrapper/CommonBoxWrapper";
+import CommonBoxWrapper from "../../common/CommonBoxWrapper/CommonBoxWrapper";
 
 const drawerWidth = 240;
 

@@ -11,9 +11,10 @@ export default function CustomDialog({
   title,
   contentText,
   handleContinue,
+  handleClose,
 }) {
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onClose={handleClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>{contentText}</DialogContentText>

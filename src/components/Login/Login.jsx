@@ -1,7 +1,7 @@
 import { Box, TextField } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import CustomButton from "../CustomButton/CustomButton";
-import CommonBox from "../CommonBox/CommonBox";
+import CommonBox from "../../common/CommonBox/CommonBox.jsx";
 import socket from "../../socket.jsx";
 import InitGame from "../InitGame/InitGame.jsx";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ import {
   setUsername,
 } from "../../features/gameSlice/gameSlice.jsx";
 import { setIsLoggedIn } from "../../features/loginSlice/loginSlice.jsx";
-import CommonBoxWrapper from "../CommonBoxWrapper/CommonBoxWrapper";
+import CommonBoxWrapper from "../../common/CommonBoxWrapper/CommonBoxWrapper";
 
 const Login = () => {
   const [enterUsername, setEnterUsername] = useState(false);
@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <CommonBoxWrapper
-      additional_class="h-48 relative0"
+      additional_class="h-48 relative"
       border_color="border-2 border-zinc-800 hover:border-violet-800"
     >
       {isLoggedIn ? (
@@ -68,6 +68,7 @@ const Login = () => {
                 name="username"
                 value={username}
                 required
+                onKeyDown={() => setEnterUsername(true)}
                 onChange={(e) => dispatch(setUsername(e.target.value))} // update username state with value
                 type="text"
                 fullWidth

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Engine from "../../Engine";
 import { Chess } from "chess.js";
-import ChessBoardButton from "../ChessBoardButton/ChessBoardButton";
+import ChessBoardButton from "../../components/ChessBoardButton/ChessBoardButton";
 import { Chessboard } from "react-chessboard";
 import { Box } from "@mui/material";
 

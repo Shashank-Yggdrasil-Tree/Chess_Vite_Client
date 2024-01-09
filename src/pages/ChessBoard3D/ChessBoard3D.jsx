@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import Engine from "../../Engine";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
-import ChessBoardButton from "../ChessBoardButton/ChessBoardButton";
+import ChessBoardButton from "../../components/ChessBoardButton/ChessBoardButton";
 import { Box } from "@mui/material";
 
 const ChessBoard3D = () => {

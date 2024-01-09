@@ -8,7 +8,6 @@ const CommonBox = ({
   children,
   handleHideBox,
   title,
-  contentText,
   handleContinue,
   boxHeight = "h-full",
 }) => {

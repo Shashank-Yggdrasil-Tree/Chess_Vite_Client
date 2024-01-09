@@ -1,30 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   message: [
     {
       id: 0,
-      username: "",
-      text: "",
+      username: '',
+      text: '',
       // timestamp: 0,
       // status: "",
     },
   ],
+  input: '',
 };
 
 export const chatSlice = createSlice({
-  name: "chat",
+  name: 'chat',
   initialState,
   reducers: {
     addMessage: (state, action) => {
       state.message = [...state.message, action.payload];
     },
-    // updateMessage: (state, action) => {
-    //   state.message
-    // }
+    setInput: (state, action) => {
+      state.input = action.payload;
+    },
   },
 });
 
-export const { addMessage } = chatSlice.actions;
+export const { addMessage, setInput } = chatSlice.actions;
 
 export default chatSlice.reducer;

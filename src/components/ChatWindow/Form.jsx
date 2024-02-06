@@ -1,56 +1,64 @@
 import { useDispatch, useSelector } from 'react-redux';
-import MessageInput from './MessageInput';
 import socket from '../../socket';
-import { addMessage } from '../../features/chatSlice/chatSlice';
-import { setInput } from '../../features/chatSlice/chatSlice';
-import { Box, Button } from '@mui/material';
+import { addMessage } from '../../features/chatSlice';
 import { useCallback } from 'react';
+import { useForm } from 'react-hook-form';
+import { DevTool } from '@hookform/devtools';
+import MessageSendBtn from './MessageSendBtn';
+import MessageInput from './MessageInput';
 
+let renderCount = 0;
+
+// UncontrolledForm
 const Form = () => {
-  const { username: senderUsername, room } = useSelector((state) => state.game);
-  const input = useSelector((state) => state.chat.input);
+	const { username: senderUsername, room } = useSelector((state) => state.game);
 
-  const dispatch = useDispatch();
+	const form = useForm();
+	const { register, control, handleSubmit, formState, reset } = form;
+	const { isDirty, isValid } = formState;
 
-  const onClickSend = useCallback(() => {
-    socket.emit(
-      'message',
-      {
-        username: senderUsername,
-        messageText: input,
-        roomId: room,
-      },
-      (r) => {
-        if (r.error) return console.log(r.m);
-        dispatch(addMessage(r));
-      }
-    );
+	const dispatch = useDispatch();
 
-    dispatch(setInput(''));
-  }, [dispatch, input, senderUsername, room]);
+	const onSubmit = useCallback(
+		(data) => {
+			const message = data.message;
+			socket.emit(
+				'message',
+				{
+					username: senderUsername,
+					messageText: message,
+					roomId: room,
+				},
+				(r) => {
+					if (r.error) return console.log(r.m);
+					dispatch(addMessage(r));
+				}
+			);
+			reset();
+		},
+		[dispatch, senderUsername, room]
+	);
 
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      onClickSend();
-    }
-  };
+	const onError = (errors) => {
+		console.log(errors);
+	};
 
-  return (
-    <>
-      <Box className="absolute bottom-0 left-0 p-5 w-full flex align-center">
-        <MessageInput handleKeyPress={handleKeyPress} />
-        <SendMessageButton onClickSend={onClickSend} />
-      </Box>
-    </>
-  );
-};
+	renderCount++;
 
-const SendMessageButton = ({ onClickSend }) => {
-  return (
-    <Button onClick={onClickSend} variant="contained">
-      Send
-    </Button>
-  );
+	return (
+		<>
+			<h1>Form ({renderCount / 2})</h1>
+			<form
+				onSubmit={handleSubmit(onSubmit, onError)}
+				noValidate
+				className="absolute bottom-0 left-0 p-5 w-full flex align-center"
+			>
+				<MessageInput register={register} />
+				<MessageSendBtn isDirty={isDirty} isValid={isValid} />
+			</form>
+			<DevTool control={control} />
+		</>
+	);
 };
 
 export default Form;

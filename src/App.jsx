@@ -1,51 +1,91 @@
-import { Box, CssBaseline } from "@mui/material";
-import { useEffect } from "react";
-import socket from "./socket.jsx";
-import Layout from "./components/Layout/Layout";
-import { useSelector, useDispatch } from "react-redux";
-import { setPlayers } from "./features/gameSlice/gameSlice.jsx";
-import { StockfishVsStockfish } from "./pages/StockfishVsStockfish/StockfishVsStockfish.jsx";
-import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
-import PlayWithComputer from "./pages/PlayWithComputer/PlayWithComputer.jsx";
-import PlayWithFriend from "./pages/PlayWithFriend/PlayWithFriend.jsx";
-import StyledChessBoard from "./pages/StyledChessBoard/StyledChessBoard.jsx";
-import ChessBoard3D from "./pages/ChessBoard3D/ChessBoard3D.jsx";
-import AnalysisBoard from "./pages/AnalysisBoard/AnalysisBoard.jsx";
-import Glassmorphism from "./pages/Glassmorphism/Glassmorphism.jsx";
+import React, { useEffect } from 'react';
+import { CssBaseline } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import socket from './socket';
+import Layout from './components/Layout/Layout';
+import { setPlayers } from './features/gameSlice';
+import Home from './pages/Home';
+import StockfishVsStockfish from './pages/StockfishVsStockfish';
+import PlayWithComputer from './pages/PlayWithComputer';
+import StyledChessBoard from './pages/StyledChessBoard';
+import ChessBoard3D from './pages/ChessBoard3D';
+import AnalysisBoard from './pages/AnalysisBoard';
+import Glassmorphism from './pages/Glassmorphism';
+import PlayVsFriend from './pages/PlayVsFriend';
+import LayoutIn from './components/Layout/LayoutIn';
 
-const ProtectedRoute = ({ isLoggedIn, children }) => {
-  if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
-  }
-  return children;
-};
+// import ProtectedRoute from './components/ProtectedRoute';
+import RequireAuth from './components/RequireAuth';
+import PersistLogin from './components/PersistLogin';
+import Missing from './pages/NotFound';
+import { selectCurrentToken } from './features/auth/authSlice';
+
+// const ProtectedRoute = ({ isLoggedIn, children }) => {
+// 	const location = useLocation();
+
+// 	if (!isLoggedIn) {
+// 		return <Navigate to="/home" state={{ from: location }} replace />;
+// 	}
+// 	return children;
+// };
 
 export default function App() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
+	const token = useSelector(selectCurrentToken);
 
-  useEffect(() => {
-    socket.on("opponentJoined", (roomData) => {
-      console.log("roomData", roomData);
-      dispatch(setPlayers(roomData.players));
-    });
-  }, []);
+	useEffect(() => {
+		socket.on('opponentJoined', (roomData) => {
+			console.log('roomData', roomData);
+			dispatch(setPlayers(roomData.players));
+		});
+	}, []);
 
-  return (
-    <>
-      <CssBaseline />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="stockstock" element={<StockfishVsStockfish />} />
-            <Route path="playvcomp" element={<PlayWithComputer />} />
-            <Route path="playvfriend" element={<PlayWithFriend />} />
-            <Route path="styled" element={<StyledChessBoard />} />
-            <Route path="ChessBoard3D" element={<ChessBoard3D />} />
-            <Route path="analysis" element={<AnalysisBoard />} />
-            <Route path="glassmorphism" element={<Glassmorphism />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+	return (
+		<Routes>
+			{/* <Route path="/" element={token ? <LayoutIn /> : <Layout />}> <== Layout for logged in users is under developement */}
+			<Route path="/" element={<Layout />}>
+				{/* persistent routes */}
+				<Route element={<PersistLogin />}>
+					{/* public routes */}
+					<Route path="/" element={<Home />} />
+
+					{/* protected routes */}
+					<Route element={<RequireAuth />}>
+						<Route path="play-vs-friend" element={<PlayVsFriend />} />
+					</Route>
+				</Route>
+			</Route>
+
+			{/* catch all */}
+			<Route path="*" element={<Missing />} />
+		</Routes>
+	);
+
+	// return (
+	// 	<>
+	// 		<CssBaseline />
+	// 		<BrowserRouter>
+	// 			<Routes>
+	// 				<Route path="/" element={isLoggedIn ? <LayoutIn /> : <Layout />}>
+	// 					<Route path="home" element={<Home />} />
+	// 					<Route path="stock-vs-stock" element={<StockfishVsStockfish />} />
+	// 					<Route path="play-vs-comp" element={<PlayWithComputer />} />
+	// 					<Route
+	// 						path="play-vs-friend"
+	// 						element={
+	// 							<ProtectedRoute isLoggedIn={isLoggedIn}>
+	// 								<PlayVsFriend />
+	// 							</ProtectedRoute>
+	// 						}
+	// 					/>
+	// 					<Route path="styled" element={<StyledChessBoard />} />
+	// 					<Route path="chess-board-3d" element={<ChessBoard3D />} />
+	// 					<Route path="analysis" element={<AnalysisBoard />} />
+	// 					<Route path="glassmorphism" element={<Glassmorphism />} />
+	// 				</Route>
+	// 			</Routes>
+	// 		</BrowserRouter>
+	// 	</>
+	// );
 }

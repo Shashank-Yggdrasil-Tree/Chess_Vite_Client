@@ -24,7 +24,7 @@ const PersistLogin = () => {
 		const verifyRefreshToken = async () => {
 			try {
 				renderCount++;
-				console.log(`render count: ${renderCount}`);
+				//console.log(`render count: ${renderCount}`);
 				await refresh();
 			} catch (err) {
 				console.error(err);
@@ -33,8 +33,8 @@ const PersistLogin = () => {
 			}
 		};
 
-		console.log(auth?.accessToken);
-		console.log(persist);
+		//console.log(auth?.accessToken);
+		//console.log(persist);
 
 		// persist added here AFTER tutorial video
 		// Avoids unwanted call to verifyRefreshToken
@@ -44,10 +44,10 @@ const PersistLogin = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log(`isLoading: ${isLoading}`);
-		console.log(`aT: ${JSON.stringify(auth?.accessToken)}`);
-		console.log(`persist: ${persist}`);
-		console.log(`aT: ${JSON.stringify(auth?.accessToken)}`);
+		//console.log(`isLoading: ${isLoading}`);
+		//console.log(`aT: ${JSON.stringify(auth?.accessToken)}`);
+		//console.log(`persist: ${persist}`);
+		//console.log(`aT: ${JSON.stringify(auth?.accessToken)}`);
 	}, [isLoading]);
 
 	return <>{!persist ? <Outlet /> : isLoading ? <p>Loading...</p> : <Outlet />}</>;

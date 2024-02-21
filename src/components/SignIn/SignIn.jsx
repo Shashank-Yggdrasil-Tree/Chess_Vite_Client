@@ -40,7 +40,7 @@ const SignIn = () => {
 
 	useEffect(() => {
 		socket.on('opponentJoined', (roomData) => {
-			console.log('roomData', roomData);
+			//console.log('roomData', roomData);
 			dispatch(setPlayers(roomData.players));
 		});
 	}, []);

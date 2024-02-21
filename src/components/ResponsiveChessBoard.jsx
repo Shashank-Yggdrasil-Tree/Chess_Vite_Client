@@ -50,7 +50,7 @@ const ResponsiveChessBoard = ({
 							},
 							customDarkSquareStyle: { backgroundColor: '#779952' },
 							customLightSquareStyle: { backgroundColor: '#edeed1' },
-					  }
+						}
 					: {})}
 			/>
 		</Box>

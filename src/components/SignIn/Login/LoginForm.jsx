@@ -35,16 +35,15 @@ const LoginForm = () => {
 	const { register, handleSubmit, formState, reset, trigger } = form;
 	const { errors, isValid } = formState;
 
-	const { currentStepIndex, step, total, isFirstStep, isLastStep, goTo, next, back } =
-		useMultistepForm([
-			<UsernameInput register={register} errors={errors} isValid={isValid} />,
-			<PasswordInput register={register} errors={errors} isValid={isValid} />,
-		]);
+	const { currentStepIndex, step, total, isFirstStep, isLastStep, goTo, next, back } = useMultistepForm([
+		<UsernameInput register={register} errors={errors} isValid={isValid} />,
+		<PasswordInput register={register} errors={errors} isValid={isValid} />,
+	]);
 
 	const onSubmit = async (data) => {
 		try {
 			const payload = await login({ user: data.username, pwd: data.password }).unwrap();
-			console.log('fulfilled', payload);
+			//console.log('fulfilled', payload);
 			dispatch(setCredentials({ ...payload, user: data.username }));
 			socket.emit('username', data.username);
 			reset();
@@ -52,7 +51,7 @@ const LoginForm = () => {
 			navigate(from, { replace: true });
 		} catch (err) {
 			if (!err?.originalStatus) {
-				console.log(err);
+				//console.log(err);
 				toast.error('No Server Response', TOAST_CONFIG);
 			} else if (err.originalStatus?.status === 400) {
 				toast.error('Missing Username or Password', TOAST_CONFIG);
@@ -71,7 +70,7 @@ const LoginForm = () => {
 			return;
 		}
 
-		console.log('isValid: ', isValid);
+		//console.log('isValid: ', isValid);
 		return next();
 	};
 

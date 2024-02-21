@@ -26,8 +26,8 @@ function InitGame() {
 
 	return (
 		<Stack justifyContent="center" alignItems="center" className="h-full relative" sx={{ py: 1 }}>
-			{status}ok
-			<TooltipWrapper helpText="Logout" placement="right">
+			{status}
+			<TooltipWrapper tooltipContent="Logout" placement="right">
 				<img
 					className="absolute top-0 left-0 w-8 m-2 cursor-pointer transition ease-in-out hover:scale-110 duration-150"
 					src="/svg_icons/logout.svg"
@@ -46,15 +46,9 @@ function InitGame() {
 					socket.emit('joinRoom', { roomId: roomInput }, (r) => {
 						// r is the response from the server
 						if (r.error) return setRoomError(r.message); // if an error is returned in the response set roomError to the error message and exit
-						console.log('response:', r);
-						console.log('setRoom:', r?.roomId);
-						console.log('setPlayers:', r?.players);
 						dispatch(setRoom(r?.roomId));
 						dispatch(setPlayers(r?.players));
 						dispatch(setOrientation('black'));
-						// setRoom(r?.roomId); // set room to the room ID
-						// setPlayers(r?.players); // set players array to the array of players in the room
-						// setOrientation("black"); // set orientation as black
 						setRoomDialogOpen(false); // close dialog
 					});
 				}}
@@ -79,7 +73,7 @@ function InitGame() {
 			<CustomButton
 				handleClick={() => {
 					socket.emit('createRoom', (r) => {
-						console.log(r);
+						//console.log(r);
 						dispatch(setRoom(r));
 						dispatch(setOrientation('white'));
 					});

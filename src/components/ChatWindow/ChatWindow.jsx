@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 import { addMessage } from '../../features/chatSlice';
 import socket from '../../socket';
@@ -42,6 +42,9 @@ const ChatWindow = () => {
 		<CommonBoxWrapper additional_class="relative h-full bg-[#092635] p-5">
 			<Box className="bg-[#1B4242] h-full overflow-y-scroll">
 				<Messages />
+				<Button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 p-2 m-2 rounded">Subscribe</Button>
+				<Button className="bg-blue-500 shadow-lg shadow-blue-500/50 p-2 m-2 rounded">Subscribe</Button>
+				<Button className="bg-indigo-500 shadow-lg shadow-indigo-500/50 p-2 m-2 rounded">Subscribe</Button>
 				<Form />
 			</Box>
 		</CommonBoxWrapper>

@@ -12,15 +12,12 @@ const Login = () => {
 	const persist = useSelector(selectCurrentPersist);
 
 	useEffect(() => {
-		console.log('persist is changed', persist);
+		//console.log('persist is changed', persist);
 		localStorage.setItem('persist', persist);
 	}, [persist]);
 
 	return (
-		<CommonBoxWrapper
-			additional_class="h-48 relative"
-			border_color="border-2 border-zinc-800 hover:border-violet-800"
-		>
+		<CommonBoxWrapper additional_class="h-48 relative" border_color="border-2 border-zinc-800 hover:border-violet-800">
 			{token ? <InitGame /> : <SignIn />}
 		</CommonBoxWrapper>
 	);

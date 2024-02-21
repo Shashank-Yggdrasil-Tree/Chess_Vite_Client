@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import React from 'react';
 
 const PasswordInput = ({ register, errors }) => {
-	console.log(errors);
+	//console.log(errors);
 
 	return (
 		<div className="w-full p-2">

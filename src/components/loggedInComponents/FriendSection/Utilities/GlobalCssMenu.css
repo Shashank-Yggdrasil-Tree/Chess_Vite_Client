@@ -1,0 +1,32 @@
+/* .MuiMenu-root {
+	background-color: #20b2aa;
+} */
+
+/* .MuiMenu-root:hover {
+	background-color: #2e8b57;
+}
+
+.MuiMenu-list:hover {
+	background-color: #2e8b57;
+} */
+
+/* darker #211f1c  */
+
+.MuiLoadingButton-loadingIndicator {
+	color: white !important;
+}
+
+.user-username-component {
+	font-size: 1.3rem;
+	font-weight: 900;
+	line-height: 1.3;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+}
+
+.MuiMenu-paper {
+	background-color: #262421 !important;
+}
+
+.MuiMenu-list {
+	background-color: #262421 !important;
+}

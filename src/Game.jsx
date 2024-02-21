@@ -17,8 +17,10 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { setRoom, setOrientation, setPlayers } from './features/gameSlice.jsx';
 import ResponsiveChessBoard from './components/ResponsiveChessBoard.jsx';
+import { selectCurrentToken } from './features/auth/authSlice.jsx';
 
 function Game() {
+	const token = useSelector(selectCurrentToken);
 	const room = useSelector((state) => state.game.room);
 	const orientation = useSelector((state) => state.game.orientation);
 	const players = useSelector((state) => state.game.players);
@@ -42,7 +44,7 @@ function Game() {
 				const result = chess.move(move); // update Chess instance
 				setFen(chess.fen()); // update fen state to trigger a re-render
 
-				console.log('over, checkmate', chess.isGameOver(), chess.isCheckmate());
+				//console.log('over, checkmate', chess.isGameOver(), chess.isCheckmate());
 
 				if (chess.isGameOver()) {
 					// check if move led to "game over"
@@ -69,8 +71,8 @@ function Game() {
 
 	function onDrop(sourceSquare, targetSqaure) {
 		// orientation is either 'white' or 'black'. game.turn() returns 'w' or 'b'
-		console.log('orientation[0]', orientation[0]);
-		console.log('chess.turn()', chess.turn());
+		//console.log('orientation[0]', orientation[0]);
+		//console.log('chess.turn()', chess.turn());
 		if (chess.turn() !== orientation[0]) return false; // <- 1 prohibit player from moving piece of other player
 
 		if (players.length < 2) return false; // <- 2 disallow a move if the opponent has not joined
@@ -91,14 +93,14 @@ function Game() {
 			move,
 			room,
 		}); // this event will be transmitted to the opponent via the server
-		console.log('making a move', move, room);
+		//console.log('making a move', move, room);
 
 		return true;
 	}
 
 	useEffect(() => {
 		socket.on('move', (move) => {
-			console.log(move);
+			//console.log(move);
 			makeAMove(move); //
 		});
 	}, [makeAMove]);
@@ -130,6 +132,8 @@ function Game() {
 					position={fen}
 					onPieceDrop={onDrop}
 					boardOrientation={orientation}
+					styled={token ? true : false}
+					customClassName={token ? 'max-w-[40rem] max-h-lg grow ml-12' : null}
 				/>
 				{players.length > 0 && (
 					<Box>

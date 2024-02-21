@@ -32,9 +32,11 @@ const UsernameInput = ({ register, errors, isValid }) => {
 					required: { value: true, message: 'Username is required' },
 					maxLength: { value: 34, message: 'Username is too big' },
 					pattern: {
-						value: /^[A-Za-z][A-Za-z0-9_]{7,34}$/,
-						message: 'Username is not valid or too small',
+						value: /^[a-z][a-z0-9_\-]{7,34}$/,
+						message: 'Not a valid Username',
 					},
+
+					// Username must start with a lowercase letter, and can only contain lowercase letters, numbers, underscores, and hyphens. It should be between 8 and 35 characters long.
 					// validate: {
 					//   isUsernameAvailable: async (fieldValue) => {
 					//     const response = await fetch(`${BASE_URL}validate-username?username=${fieldValue}`);

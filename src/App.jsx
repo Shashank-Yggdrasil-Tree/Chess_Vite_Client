@@ -36,19 +36,20 @@ export default function App() {
 
 	useEffect(() => {
 		socket.on('opponentJoined', (roomData) => {
-			console.log('roomData', roomData);
+			//console.log('roomData', roomData);
 			dispatch(setPlayers(roomData.players));
 		});
 	}, []);
 
 	return (
 		<Routes>
-			{/* <Route path="/" element={token ? <LayoutIn /> : <Layout />}> <== Layout for logged in users is under developement */}
-			<Route path="/" element={<Layout />}>
+			<Route path="/" element={token ? <LayoutIn /> : <Layout />}>
+				{/* <Route path="/" element={<Layout />}> */}
 				{/* persistent routes */}
 				<Route element={<PersistLogin />}>
 					{/* public routes */}
 					<Route path="/" element={<Home />} />
+					<Route path="/glassmorphism" element={<Glassmorphism />} />
 
 					{/* protected routes */}
 					<Route element={<RequireAuth />}>

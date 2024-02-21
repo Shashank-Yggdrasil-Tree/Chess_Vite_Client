@@ -7,7 +7,7 @@ import ResponsiveDrawer from '../Drawer';
 
 const Layout = () => {
 	const location = useLocation().pathname;
-	console.log(location);
+	//console.log(location);
 
 	return (
 		<Stack className="bg-hero-pattern bg-no-repeat bg-center bg-cover h-screen w-screen">

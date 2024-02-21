@@ -35,14 +35,14 @@ const RegiForm = () => {
 	const onSubmit = async (data) => {
 		if (!data) return;
 
-		console.log(data);
+		//console.log(data);
 		try {
 			const userData = await registerUser({
 				user: data.username,
 				pwd: data.password,
 				cpwd: data.confirmPassword,
 			}).unwrap();
-			console.log('fulfilled', userData);
+			//console.log('fulfilled', userData);
 			dispatch(setCredentials({ ...userData, user: data.username }));
 			if (userData.userCreated) {
 				socket.emit('username', data.username);

@@ -36,14 +36,14 @@ const SignIn = () => {
 		setShowRegister(false);
 	}, []);
 
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
-	useEffect(() => {
-		socket.on('opponentJoined', (roomData) => {
-			//console.log('roomData', roomData);
-			dispatch(setPlayers(roomData.players));
-		});
-	}, []);
+	// useEffect(() => {
+	// 	socket.on('opponentJoined', (roomData) => {
+	// 		//console.log('roomData', roomData);
+	// 		dispatch(setPlayers(roomData.players));
+	// 	});
+	// }, []);
 
 	return (
 		<Box className={'h-48 relative'}>

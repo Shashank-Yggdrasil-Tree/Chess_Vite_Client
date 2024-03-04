@@ -15,13 +15,22 @@ const HtmlTooltip = styled(({ className, ...props }) => <Tooltip {...props} clas
 	})
 );
 
-const TooltipWrapper = ({ children, tooltipContent, placement, isTextOnly = true }) => {
+const TooltipWrapper = ({
+	children,
+	tooltipContent,
+	placement,
+	isTextOnly = true,
+	enterDelay = 500,
+	leaveDelay = 200,
+	isHidden = false,
+}) => {
 	return (
 		<HtmlTooltip
 			title={<>{isTextOnly ? <Typography color="inherit">{tooltipContent}</Typography> : { tooltipContent }}</>}
-			enterDelay={500}
-			leaveDelay={200}
+			enterDelay={enterDelay}
+			leaveDelay={leaveDelay}
 			placement={placement}
+			className={isHidden ? 'hidden' : null}
 		>
 			<span>{children}</span>
 		</HtmlTooltip>

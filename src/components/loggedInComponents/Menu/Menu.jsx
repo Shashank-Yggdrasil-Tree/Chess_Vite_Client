@@ -5,10 +5,10 @@ import TimeVariantGrid from './TimeVariantGrid';
 
 const Menu = () => {
 	const tabOne = (
-		<>
-			<TimeVariantGrid />
+		<Box className="flex justify-between flex-col h-full">
 			<SearchPlayers />
-		</>
+			<TimeVariantGrid />
+		</Box>
 	);
 
 	return (

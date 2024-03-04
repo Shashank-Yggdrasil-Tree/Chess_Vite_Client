@@ -7,19 +7,28 @@ import Game from '../Game';
 
 const PlayVsFriend = () => {
 	const user = useSelector(selectCurrentUser);
-	const token = useSelector(selectCurrentToken);
 	const room = useSelector((state) => state.game.room);
 
 	const welcome = user ? `Welcome ${user}` : 'Welcome!';
-	const tokenAbbr = `${token.slice(0, 9)}...`;
+
+	const responsiveClass = {
+		chessBoard: 'w-[20rem] lg:w-[38rem] max-h-lg grow h-full flex justify-center items-center',
+	};
 
 	const content = (
-		<Stack className="grow">
+		<Stack className="grow h-full w-full">
 			{/* <h1 className="text-white">{welcome}</h1>
 			<p className="text-white">Token: {tokenAbbr}</p> */}
-			<Box className="grow">
-				{room ? <Game /> : <ResponsiveChessBoard styled customClassName="max-w-[40rem] max-h-lg grow ml-12" />}
-			</Box>
+			{room ? (
+				<Box className="grow h-full w-full">
+					<Game responsiveClass={responsiveClass.chessBoard} />
+				</Box>
+			) : (
+				<Box className="grow h-full w-full">
+					<Game responsiveClass={responsiveClass.chessBoard} />
+					{/* <ResponsiveChessBoard styled customClassName={responsiveClass.chessBoard} /> */}
+				</Box>
+			)}
 		</Stack>
 	);
 

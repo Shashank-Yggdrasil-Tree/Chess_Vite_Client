@@ -1,6 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { toast } from 'react-toastify';
+import { TOAST_CONFIG } from '../../../constants/toast-config';
 
 const TimeVariantGrid = () => {
 	let timeVariants = [
@@ -18,19 +20,18 @@ const TimeVariantGrid = () => {
 		{ id: 12, title: 'Custom' },
 	];
 
-	const startGame = (setTime) => {};
+	const startGame = () => {
+		toast.info('Coming soon!', TOAST_CONFIG);
+	};
 
 	return (
-		<div className="grid grid-cols-3 gap-4 text-white">
+		<div className="grid grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 text-white ">
 			{timeVariants.map(({ id, time, title }) => (
 				<Button
 					key={id}
-					onClick={() => startGame(id)}
-					className="h-20 flex flex-col bg-white bg-opacity-10 hover:bg-opacity-20 hover:border-neutral-400 border border-neutral-600"
+					onClick={() => startGame()}
+					className="backdrop-blur-md h-20 flex flex-col bg-white bg-opacity-10 hover:bg-opacity-20 hover:border-neutral-400 border border-neutral-600"
 					variant="outlined"
-					style={{
-						backdropFilter: 'blur(10px)',
-					}}
 				>
 					<span className="text-white flex flex-col gap-0.5">
 						<span className="text-2xl">{time}</span>

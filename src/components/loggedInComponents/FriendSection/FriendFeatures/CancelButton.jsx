@@ -21,11 +21,8 @@ const CancelButton = ({ helperText = 'delete', bgColor = 'bg-[#32312f]', friends
 		<>
 			<TooltipWrapper tooltipContent={helperText} placement="top">
 				<Button
-					className={`m-w-2 p-2 w-4 min-w-10 ${bgColor} hover:bg-red-500 bg-opacity-50 hover:bg-opacity-100`}
+					className={`backdrop-blur-md m-w-2 p-2 w-4 min-w-10 ${bgColor} hover:bg-red-500 bg-opacity-50 hover:bg-opacity-100`}
 					variant="contained"
-					style={{
-						backdropFilter: 'blur(10px)',
-					}}
 					onClick={() => {
 						unfriendRequest({
 							senderUsername,

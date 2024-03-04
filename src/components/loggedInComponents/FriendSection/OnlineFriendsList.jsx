@@ -14,7 +14,6 @@ const OnlineFriendsList = () => {
 
 	// useEffect(() => {}, [friendsStatusData]);
 	const statusArray = friendsStatusData?.length > 0 ? friendsStatusData : [];
-	const animationactive = false;
 
 	// mix-blend-luminosity
 	const findFriendStatus = statusArray.find((item) => item?.status === 'friends');
@@ -41,7 +40,7 @@ const OnlineFriendsList = () => {
 		<>
 			{!isLoading ? (
 				<Layout>
-					<OnlineFriendsListItems statusArray={onlyFriends} animationactive={animationactive} />
+					<OnlineFriendsListItems statusArray={onlyFriends} />
 				</Layout>
 			) : (
 				<SkeletonLoading num={5} ch={20} cw={20} rh={15} rw={100} />

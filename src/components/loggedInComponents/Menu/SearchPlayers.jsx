@@ -49,19 +49,19 @@ const SearchPlayers = () => {
 	};
 
 	return (
-		<>
-			<Box className="flex gap-1 justify-center mt-4">
-				<span className="select-none w-8 opacity-55">
-					<img src="svg_icons/search.svg" alt="hand shake" className="pointer-events-none" />
+		<Box>
+			<Box className="flex gap-1 justify-center mb-2">
+				<span className="select-none w-8">
+					<img src="svg_icons/hand_shake.svg" alt="hand shake" className="pointer-events-none" />
 				</span>
 				<p
-					className="select-none pointer-events-none text-center flex align-center text-3xl text-[#5e636f] opacity-85 m-[1px]"
+					className="select-none pointer-events-none text-center flex align-center text-3xl text-white opacity-85 m-[1px]"
 					style={{ fontFamily: "'NTR', sans-serif" }}
 				>
-					Search Players
+					Find Players
 				</p>
 			</Box>
-			<Box className="w-full py-2 ">
+			<Box className="w-full py-2">
 				<Input
 					id="username"
 					autoComplete="off"
@@ -81,7 +81,7 @@ const SearchPlayers = () => {
 					/>
 				</Box>
 			</Box>
-		</>
+		</Box>
 	);
 };
 

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import SkeletonLoading from '../../../../common/SkeletonLoading';
 import FriendRequestButtons from './FriendRequestButtons';
 import { Avatar, Box, MenuItem } from '@mui/material';
+import { randomFaces } from '../../../../common/randomFaces';
 
 const FriendRequestListItem = ({ status = '', altMsg = '', friendsStatusData, isLoading }) => {
 	const [showLoading, setShowLoading] = useState(true);
@@ -15,16 +16,6 @@ const FriendRequestListItem = ({ status = '', altMsg = '', friendsStatusData, is
 	}, [isLoading]);
 
 	const statusArray = friendsStatusData?.length > 0 ? friendsStatusData : [];
-
-	const randomFaces = useCallback(() => {
-		const faceCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-		const randomIndex = faceCount[Math.floor(Math.random() * faceCount.length)];
-
-		const path = `/svg_faces/face_${randomIndex}.svg`;
-
-		return path;
-	}, []);
 
 	console.log(friendsStatusData);
 

@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 
-export const StyledBadge = styled(Badge)(({ animationactive }) => ({
+export const StyledBadge = styled(Badge)(() => ({
 	'& .MuiBadge-badge': {
 		backgroundColor: '#44b700',
 		color: '#44b700',
@@ -12,7 +12,6 @@ export const StyledBadge = styled(Badge)(({ animationactive }) => ({
 			width: '100%',
 			height: '100%',
 			borderRadius: '50%',
-			animation: `${animationactive ? 'ripple 1.2s infinite ease-in-out' : ''}`,
 			border: '1px solid currentColor',
 			content: '""',
 		},

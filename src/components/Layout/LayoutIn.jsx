@@ -1,38 +1,35 @@
-import { Box, Grid, Stack } from '@mui/material';
-import React from 'react';
-// import ChatWindow from '../ChatWindow';
+import { Box, Stack } from '@mui/material';
+import React, { useState } from 'react';
 import Login from '../SignIn/Login';
-import { Outlet, useLocation } from 'react-router-dom';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import ResponsiveDrawer from '../Drawer';
+import { Outlet } from 'react-router-dom';
 import Menu from '../loggedInComponents/Menu/Menu';
 import FriendSection from '../loggedInComponents/FriendSection/FriendSection';
+import useWindowDimensions from '../../hooks/useWindowDimension';
 
 const LayoutIn = () => {
-	const location = useLocation().pathname;
-	//console.log(location);
+	const [collapse, setCollapse] = useState(false);
+	const { width, height } = useWindowDimensions();
+
+	const responsiveNavClass = collapse ? 'hidden md:block md:w-11 lg:w-11' : 'hidden md:block md:w-36 lg:w-36';
 
 	const contentNav = (
 		<>
-			<Login />
+			<Login collapse={collapse} setCollapse={setCollapse} />
 		</>
 	);
 
 	const content = (
 		<>
 			<div className="flex grow">
-				<Stack className="h-screen grow max-w-[53%] min-w-96">
-					<Box className="flex h-full flex-1 items-center grow">
-						<Outlet />
-					</Box>
-				</Stack>
+				<Box className="flex flex-1 justify-center items-center h-screen w-full grow w-96">
+					<Outlet />
+				</Box>
 
-				<Stack className="bg-[#21201d] w-[34%] max-h-[44em] items-center mr-5 my-4 text-white min-w-96 rounded-md">
+				<Stack className="flex-1 max-w-[28em] bg-[#21201d] h-[44em] items-center mr-5 my-4 text-white rounded-md">
 					<Menu />
 				</Stack>
 
-				<Stack className="w-[13.5%] flex-none">
+				<Stack className="flex-none">
 					<FriendSection />
 				</Stack>
 			</div>
@@ -42,7 +39,7 @@ const LayoutIn = () => {
 	return (
 		<>
 			<div className="flex h-screen">
-				<div className="flex-none w-36 bg-[#21201d]">{contentNav}</div>
+				<div className={`flex-none bg-[#262522] ${responsiveNavClass}`}>{contentNav}</div>
 				<div className="flex-1 bg-[#302e2b]">{content}</div>
 			</div>
 		</>

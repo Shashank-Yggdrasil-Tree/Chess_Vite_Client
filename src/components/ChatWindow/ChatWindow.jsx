@@ -42,6 +42,9 @@ const ChatWindow = () => {
 		<CommonBoxWrapper additional_class="relative h-full bg-[#092635] p-5">
 			<Box className="bg-[#1B4242] h-full overflow-y-scroll">
 				<Messages />
+				<span className="underline-animation lg:text-3xl duration-300 sm:text-sm  md:text-md font-medium font-barlow leading-[4rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer ">
+					qwerty
+				</span>
 				<Button className="bg-cyan-500 shadow-lg shadow-cyan-500/50 p-2 m-2 rounded">Subscribe</Button>
 				<Button className="bg-blue-500 shadow-lg shadow-blue-500/50 p-2 m-2 rounded">Subscribe</Button>
 				<Button className="bg-indigo-500 shadow-lg shadow-indigo-500/50 p-2 m-2 rounded">Subscribe</Button>

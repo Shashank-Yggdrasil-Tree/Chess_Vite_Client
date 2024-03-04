@@ -17,14 +17,14 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { setRoom, setOrientation, setPlayers } from './features/gameSlice.jsx';
 import ResponsiveChessBoard from './components/ResponsiveChessBoard.jsx';
-import { selectCurrentToken } from './features/auth/authSlice.jsx';
+import { selectCurrentToken, selectCurrentUser } from './features/auth/authSlice.jsx';
 
-function Game() {
+function Game({ responsiveClass }) {
 	const token = useSelector(selectCurrentToken);
 	const room = useSelector((state) => state.game.room);
 	const orientation = useSelector((state) => state.game.orientation);
 	const players = useSelector((state) => state.game.players);
-	const username = useSelector((state) => state.game.username);
+	const challenger = useSelector(selectCurrentUser);
 	const dispatch = useDispatch();
 
 	const cleanup = useCallback(() => {
@@ -119,34 +119,22 @@ function Game() {
 		});
 	}, [room, cleanup]);
 
+	const challengee = players.filter((p) => p?.username !== challenger)[0]?.username;
+	// {challengee || <>waiting for the player to join</>}
+	// {challenger}
+
 	return (
-		<Stack>
-			<Card>
-				<CardContent>
-					<Typography variant="h5">Room ID: {room}</Typography>
-				</CardContent>
-			</Card>
-			<Stack flexDirection="column" sx={{ pt: 2 }}>
+		<>
+			<Stack className="grow h-full w-full flex justify-center items-center">
 				<ResponsiveChessBoard
 					id="pvfchessboard"
 					position={fen}
 					onPieceDrop={onDrop}
 					boardOrientation={orientation}
-					styled={token ? true : false}
-					customClassName={token ? 'max-w-[40rem] max-h-lg grow ml-12' : null}
+					styled={!!token}
+					customClassName={token ? responsiveClass : null}
 				/>
-				{players.length > 0 && (
-					<Box>
-						<List>
-							<ListSubheader>Players</ListSubheader>
-							{players.map((p) => (
-								<ListItem key={p.id} className="text-white">
-									<ListItemText primary={p.username} />
-								</ListItem>
-							))}
-						</List>
-					</Box>
-				)}
+				{/* <p className="text-white capitalize">Shashank</p> */}
 			</Stack>
 			<CustomDialog // Game Over CustomDialog
 				open={Boolean(over)}
@@ -158,7 +146,7 @@ function Game() {
 					cleanup();
 				}}
 			/>
-		</Stack>
+		</>
 	);
 }
 

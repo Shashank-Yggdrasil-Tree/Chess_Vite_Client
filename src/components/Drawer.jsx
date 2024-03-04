@@ -19,8 +19,7 @@ function ResponsiveDrawer(props) {
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = useState(false);
 
-	const { play_vs_friend, engine_vs_engine, play_vs_comp, styled, chessboard_3d, analysis, home } =
-		PATH_NAME;
+	const { play_vs_friend, engine_vs_engine, play_vs_comp, styled, chessboard_3d, analysis, home } = PATH_NAME;
 
 	const stockfishNavList = [
 		{ name: 'Play Vs Friend', link: play_vs_friend },

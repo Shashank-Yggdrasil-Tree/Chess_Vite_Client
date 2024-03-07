@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '../../features/auth/authSlice.jsx';
 import { selectCurrentPersist } from '../../features/auth/authSlice.jsx';
@@ -6,11 +6,14 @@ import Navigation from '../loggedInComponents/Navigation/Navigation.jsx';
 
 import SignIn from './SignIn.jsx';
 import CommonBoxWrapper from '../../common/CommonBoxWrapper.jsx';
+import { BreakpointContext } from '../../BreakpointProvider.jsx';
+import { Button } from '@mui/material';
 
 const Login = ({ setCollapse, collapse }) => {
 	// const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 	const token = useSelector(selectCurrentToken);
 	const persist = useSelector(selectCurrentPersist);
+	const { xlBreakpoint, smBreakpoint } = useContext(BreakpointContext);
 
 	useEffect(() => {
 		//console.log('persist is changed', persist);
@@ -27,7 +30,9 @@ const Login = ({ setCollapse, collapse }) => {
 					<SignIn />
 				</CommonBoxWrapper>
 			) : (
-				<Navigation collapse={collapse} setCollapse={setCollapse} />
+				<>
+					<Navigation collapse={collapse} setCollapse={setCollapse} />
+				</>
 			)}
 		</>
 	);

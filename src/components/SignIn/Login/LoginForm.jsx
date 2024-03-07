@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
-import { useMultistepForm } from '../../../hooks/useMultiStepForm';
+import { useMultistepForm } from '../../../hooks/useMultistepForm';
 import CustomButton from '../../CustomButton';
 import UsernameInput from './UsernameInput';
 import PasswordInput from '../Register/PasswordInput';
@@ -52,7 +52,7 @@ const LoginForm = () => {
 		} catch (err) {
 			if (!err?.originalStatus) {
 				//console.log(err);
-				toast.error('No Server Response', TOAST_CONFIG);
+				toast.error('Invalid Credentials', TOAST_CONFIG);
 			} else if (err.originalStatus?.status === 400) {
 				toast.error('Missing Username or Password', TOAST_CONFIG);
 			} else if (err.originalStatus?.status === 401) {
@@ -98,17 +98,22 @@ const LoginForm = () => {
 
 	return (
 		<>
-			<h1>Form ({renderCount / 2})</h1>
+			{/* <h1>Form ({renderCount / 2})</h1> */}
 			<form onSubmit={handleSubmit(onSubmit)} noValidate>
-				<div style={{ position: 'absolute', top: '.5rem', right: '.5rem' }}>
+				<div style={{ position: 'absolute', top: '-0.5rem', right: '0.5rem' }}>
 					{currentStepIndex + 1} / {total}
 				</div>
 
 				{step}
 
-				{!isFirstStep && <CustomButton handleClick={back}>Back</CustomButton>}
+				{!isFirstStep && (
+					<CustomButton additional_className="ml-2" handleClick={back}>
+						Back
+					</CustomButton>
+				)}
 
 				<CustomButton
+					additional_className="ml-2"
 					type={isLastStep ? 'submit' : 'button'}
 					handleClick={() => handleNext(inputParamObj.currentStepIndex)}
 					disabled={!isValid}

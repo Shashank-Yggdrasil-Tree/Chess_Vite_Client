@@ -6,11 +6,12 @@ import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 import MessageSendBtn from './MessageSendBtn';
 import MessageInput from './MessageInput';
+import Messages from './Messages';
 
 let renderCount = 0;
 
 // UncontrolledForm
-const Form = () => {
+const Form = ({ selectedTheme }) => {
 	const { username: senderUsername, room } = useSelector((state) => state.game);
 
 	const form = useForm();
@@ -47,13 +48,13 @@ const Form = () => {
 
 	return (
 		<>
-			<h1>Form ({renderCount / 2})</h1>
+			{/* <h1>Form ({renderCount / 2})</h1> */}
 			<form
 				onSubmit={handleSubmit(onSubmit, onError)}
 				noValidate
 				className="absolute bottom-0 left-0 p-5 w-full flex align-center"
 			>
-				<MessageInput register={register} />
+				<MessageInput register={register} selectedTheme={selectedTheme} />
 				<MessageSendBtn isDirty={isDirty} isValid={isValid} />
 			</form>
 			<DevTool control={control} />

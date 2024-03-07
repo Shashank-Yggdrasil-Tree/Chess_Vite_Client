@@ -11,7 +11,7 @@ import RegiForm from './Register/RegiForm.jsx';
 import LoginForm from './Login/LoginForm.jsx';
 
 const LoginButtons = React.memo(({ onLoginClick, onRegisterClick }) => (
-	<Stack className="inset-center">
+	<Stack className="inset-center p-0 m-0">
 		<CustomButton handleClick={onLoginClick}>Login</CustomButton>
 		<StyledLinkText onClick={onRegisterClick}>REGISTER</StyledLinkText>
 	</Stack>

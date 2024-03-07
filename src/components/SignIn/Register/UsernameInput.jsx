@@ -28,6 +28,9 @@ const UsernamInput = ({ register, errors, isValid }) => {
 					},
 					input: { color: 'white' },
 				}}
+				InputLabelProps={{
+					style: { color: 'gray' }, // Set the placeholder color here
+				}}
 				{...register('username', {
 					required: { value: true, message: 'Username is required' },
 					maxLength: { value: 34, message: 'Username is too big' },
@@ -48,7 +51,7 @@ const UsernamInput = ({ register, errors, isValid }) => {
 					// },
 				})}
 			></TextField>
-			<p className="text-red font-[12px]">{!isValid ? errors.username?.message : 'Valid Username'}</p>
+			<p className="text-fuchsia-600 font-xs">{!isValid ? errors.username?.message : 'Valid Username'}</p>
 		</div>
 	);
 };

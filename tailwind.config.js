@@ -11,6 +11,19 @@ export default {
 			fontFamily: {
 				barlow: ['Barlow SemiBold', 'Helvetica', 'Arial', 'sans-serif'],
 			},
+
+			keyframes: {
+				underlineAnimation: {
+					'0%': {
+						transform: 'scaleX(0)',
+						transformOrigin: '50% 100%',
+					},
+					'100%': {
+						transform: 'scaleX(1)',
+						transformOrigin: '50% 100%',
+					},
+				},
+			},
 		},
 	},
 	plugins: [],

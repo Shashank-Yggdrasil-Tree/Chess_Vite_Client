@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import CustomButton from '../../CustomButton';
-import { useMultistepForm } from '../../../hooks/useMultiStepForm';
+import { useMultistepForm } from '../../../hooks/useMultistepForm';
 
 import UsernamInput from './UsernameInput';
 import PasswordInput from './PasswordInput';
@@ -56,7 +56,7 @@ const RegiForm = () => {
 					toast.error('Username already exists, Please try again', TOAST_CONFIG);
 				} else {
 					console.error('rejected', err);
-					toast.error('No Server Response', TOAST_CONFIG);
+					toast.error('Invalid Credentials', TOAST_CONFIG);
 				}
 			} else if (err.originalStatus?.status === 400) {
 				toast.error('Missing Username or Password', TOAST_CONFIG);
@@ -105,17 +105,22 @@ const RegiForm = () => {
 
 	return (
 		<>
-			<h1>Form ({renderCount / 2})</h1>
+			{/* <h1>Form ({renderCount / 2})</h1> */}
 			<form onSubmit={handleSubmit(onSubmit)} noValidate>
-				<div style={{ position: 'absolute', top: '.5rem', right: '.5rem' }}>
+				<div style={{ position: 'absolute', top: '-0.5rem', right: '0.5rem' }}>
 					{currentStepIndex + 1} / {total}
 				</div>
 
 				{step}
 
-				{!isFirstStep && <CustomButton handleClick={back}>Back</CustomButton>}
+				{!isFirstStep && (
+					<CustomButton additional_className="ml-2" handleClick={back}>
+						Back
+					</CustomButton>
+				)}
 
 				<CustomButton
+					additional_className="ml-2"
 					type={isLastStep ? 'submit' : 'button'}
 					handleClick={() => handleNext(inputParam)}
 					disabled={!isValid}

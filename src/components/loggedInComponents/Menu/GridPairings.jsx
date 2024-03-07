@@ -15,7 +15,7 @@
 // 			</Button>
 // 		);
 // 	}
-	
+
 // };
 
 // export default GridPairings;

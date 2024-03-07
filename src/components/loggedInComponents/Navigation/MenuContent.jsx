@@ -31,7 +31,6 @@ const MenuContent = ({ isMenuVisible, setIsMenuVisible, collapse, setCollapse })
 				>
 					{challenges.map((challenge) => (
 						<>
-							<Stack key={challenge}>{challenge}</Stack>
 							<Button
 								onClick={() => {
 									// Join a room

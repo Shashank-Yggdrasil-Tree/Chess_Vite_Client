@@ -26,12 +26,7 @@ const Glassmorphism = () => {
 					backdropFilter: 'blur(10px)',
 				}}
 			>
-				<div
-					className="py-8 px-4 lg:px-6 bg-[#21201d] bg-opacity-10 flex flex-col w-full lg:w-auto lg:max-w-xs"
-					style={{
-						backdropFilter: 'blur(10px)',
-					}}
-				>
+				<div className="py-8 px-4 lg:px-6 bg-[#21201d] bg-opacity-10 flex flex-col w-full lg:w-auto lg:max-w-xs backdrop-blur-[10px]">
 					<img
 						className="rounded-full shadow-sm w-40 h-40 mb-4 border-2 border-purple-500 select-none mx-auto"
 						src="/svg_icons/paper_plane1.svg"

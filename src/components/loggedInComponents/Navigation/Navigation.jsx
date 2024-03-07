@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Box, Stack } from '@mui/material';
 import SettingsList from './SettingsList';
 import NavMenuWrapper from './NavMenuWrapper';
 import MenuContent from './MenuContent';
 import useWindowDimensions from '../../../hooks/useWindowDimension';
+import { BreakpointContext } from '../../../BreakpointProvider';
 
 const Navigation = ({ setCollapse, collapse }) => {
 	const [isMenuVisible, setIsMenuVisible] = useState(false);
 	const { width, height } = useWindowDimensions();
 
-	if (width <= 1250) {
-		setCollapse(true);
-	} else {
-		setCollapse(false);
-	}
+	useEffect(() => {
+		if (width <= 1250) {
+			setCollapse(true);
+		} else {
+			setCollapse(false);
+		}
+	}, [width]);
 
 	const menuArr = ['play'];
 

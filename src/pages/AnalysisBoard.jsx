@@ -21,8 +21,7 @@ const AnalysisBoard = () => {
 		engine.onMessage(({ positionEvaluation, possibleMate, pv, depth }) => {
 			if (depth < 10) return;
 
-			positionEvaluation &&
-				setPositionEvaluation(((game.turn() === 'w' ? 1 : -1) * Number(positionEvaluation)) / 100);
+			positionEvaluation && setPositionEvaluation(((game.turn() === 'w' ? 1 : -1) * Number(positionEvaluation)) / 100);
 			possibleMate && setPossibleMate(possibleMate);
 			depth && setDepth(depth);
 			pv && setBestline(pv);
@@ -90,9 +89,7 @@ const AnalysisBoard = () => {
 						borderRadius: '4px',
 						boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
 					}}
-					customArrows={
-						bestMove && [[bestMove.substring(0, 2), bestMove.substring(2, 4), 'rgb(0, 128, 0)']]
-					}
+					customArrows={bestMove && [[bestMove.substring(0, 2), bestMove.substring(2, 4), 'rgb(0, 128, 0)']]}
 				/>
 				<ChessBoardButton
 					onClick={() => {

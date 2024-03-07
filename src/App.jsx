@@ -44,12 +44,17 @@ export default function App() {
 	return (
 		<Routes>
 			<Route path="/" element={token ? <LayoutIn /> : <Layout />}>
-				{/* <Route path="/" element={<Layout />}> */}
 				{/* persistent routes */}
+				{/* new code */}
 				<Route element={<PersistLogin />}>
 					{/* public routes */}
 					<Route path="/" element={<Home />} />
-					<Route path="/glassmorphism" element={<Glassmorphism />} />
+					<Route path="/home" element={<Home />} />
+					<Route path="/stock-vs-stock" element={<StockfishVsStockfish />} />
+					<Route path="/play-vs-comp" element={<PlayWithComputer />} />
+					<Route path="/styled" element={<StyledChessBoard />} />
+					<Route path="/chess-board-3d" element={<ChessBoard3D />} />
+					<Route path="/analysis" element={<AnalysisBoard />} />
 
 					{/* protected routes */}
 					<Route element={<RequireAuth />}>

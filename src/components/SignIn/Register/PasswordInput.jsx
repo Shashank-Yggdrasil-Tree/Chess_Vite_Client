@@ -7,7 +7,7 @@ const PasswordInput = ({ register, errors, isValid }) => {
 			<TextField
 				id="password"
 				type="password"
-				label="password"
+				label="Password"
 				autoComplete="off"
 				className="w-full caret-white"
 				color="secondary"
@@ -26,6 +26,9 @@ const PasswordInput = ({ register, errors, isValid }) => {
 					},
 					input: { color: 'white' },
 				}}
+				InputLabelProps={{
+					style: { color: 'gray' }, // Set the placeholder color here
+				}}
 				{...register('password', {
 					required: { value: true, message: 'password is required' },
 					maxLength: { value: 29, message: 'password is too big' },
@@ -35,7 +38,7 @@ const PasswordInput = ({ register, errors, isValid }) => {
 					},
 				})}
 			></TextField>
-			<p className="text-red font-[12px]">{!isValid ? errors.password?.message : 'Valid password'}</p>
+			<p className="text-fuchsia-600 font-xs">{!isValid ? errors.password?.message : 'Valid password'}</p>
 		</div>
 	);
 };

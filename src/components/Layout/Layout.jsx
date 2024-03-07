@@ -11,7 +11,7 @@ const Layout = () => {
 
 	return (
 		<Stack className="bg-hero-pattern bg-no-repeat bg-center bg-cover h-screen w-screen">
-			<Box className="flex h-full w-full ">
+			<Box className="flex h-full w-full bg-black bg-opacity-60 backdrop-blur-[3px]">
 				<Box className="flex-none md:flex-1">
 					<ResponsiveDrawer />
 				</Box>

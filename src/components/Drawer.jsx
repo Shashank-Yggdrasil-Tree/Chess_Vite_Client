@@ -8,10 +8,12 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import CommonBoxWrapper from '../common/CommonBoxWrapper';
 import { PATH_NAME } from '../constants/path-name';
+import { toast } from 'react-toastify';
+import { TOAST_CONFIG } from '../constants/toast-config';
 
 const drawerWidth = 240;
 
@@ -35,30 +37,34 @@ function ResponsiveDrawer(props) {
 		setMobileOpen(!mobileOpen);
 	};
 
+	const showToast = () => {
+		toast.info('Please login to play with a friend', TOAST_CONFIG);
+	};
+
 	const drawer = (
 		<div>
 			<List className="lg:h-[32rem] md:h-[20rem] overflow-y-scroll overflow-x-hidden scrollbar-effect divide-y divide-zinc-800">
 				{stockfishNavList.map(({ name, link }, index) => (
 					<ListItem
 						key={index}
-						className="bg-[#26262680]transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-300"
+						className="hover:bg-[#26262680] transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 group cursor-pointer"
 						disablePadding
 					>
 						<Link to={link} className="w-full">
-							<ListItemButton>
-								{/* <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
+							<ListItemButton onClick={name === 'Play Vs Friend' ? showToast : undefined}>
 								<ListItemText
 									disableTypography
-									className="flex justify-center opacity-70 hover:opacity-100 transition-opacity duration-100 lg:my-3 md:my-2"
+									className="flex justify-center transition-opacity duration-100 lg:my-3 md:my-2 opacity-70 group-hover:opacity-100"
 									primary={
-										<Typography
-											variant="h2"
-											className="underline-animation lg:text-3xl duration-300 sm:text-sm  md:text-md font-medium font-barlow leading-[4rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
-										>
-											{name}
-										</Typography>
+										<>
+											<Typography
+												variant="h2"
+												className="inline-block relative lg:text-3xl sm:text-sm md:text-md duration-300 font-medium font-barlow leading-[4rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer"
+											>
+												{name}
+												<span className="absolute left-0 bottom-0 w-full h-0.5 bg-orange-500 origin-bottom transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
+											</Typography>
+										</>
 									}
 								/>
 							</ListItemButton>
@@ -84,7 +90,7 @@ function ResponsiveDrawer(props) {
 									primary={
 										<Typography
 											variant="h2"
-											className="underline-animation text-sm font-medium font-barlow leading-[1rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
+											className="inline-block relative group cursor-pointer text-sm font-medium font-barlow leading-[1rem] tracking-wider select-none whitespace-nowrap uppercase cursor-pointer "
 										>
 											{name}
 										</Typography>
@@ -115,7 +121,7 @@ function ResponsiveDrawer(props) {
 			</IconButton>
 
 			<Box
-				className="w-full h-full bg-transparent text-white flex justify-center items-center"
+				className="w-full h-full bg-black bg-opacity-40 text-white flex justify-center items-center"
 				component="nav"
 				aria-label="mailbox folders"
 			>

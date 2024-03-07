@@ -8,7 +8,7 @@ const CommonBox = ({ visible, children, handleHideBox, title, handleContinue, bo
 		<>
 			{visible && (
 				<Box className={`${boxHeight} relative`}>
-					<TooltipWrapper tooltipContent="Go Back" placement="right">
+					<TooltipWrapper tooltipContent="Go Back" placement="left">
 						<ArrowCircleLeftIcon
 							onClick={handleHideBox}
 							className="absolute left-0 cursor-pointer rounded-full bg-violet-800 size-8 m-2 text-black transition ease-in-out hover:scale-110 duration-150 hover:bg-gradient-to-r from-violet-800 to-fuchsia-700"

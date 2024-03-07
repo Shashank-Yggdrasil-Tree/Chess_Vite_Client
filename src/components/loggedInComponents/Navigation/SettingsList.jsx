@@ -1,8 +1,18 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import TooltipWrapper from '../../../common/TooltipWrapper';
 import { useState } from 'react';
+import { useLogoutQuery } from '../../../features/auth/authApiSlice';
+import { useDispatch } from 'react-redux';
+import socket from '../../../socket';
 // #1B1A18
 const SettingsList = ({ collapse, setCollapse }) => {
+	const [skip, setSkip] = useState(true);
+	const { data, error, status } = useLogoutQuery(undefined, { skip });
+
+	const handleLogout = () => {
+		socket.emit('logout');
+		setSkip((prev) => !prev);
+	};
 	const settingNames = ['settings', 'help'];
 
 	const responsiveClass = {
@@ -40,6 +50,15 @@ const SettingsList = ({ collapse, setCollapse }) => {
 						</Box>
 					</TooltipWrapper>
 				))}
+
+				<TooltipWrapper tooltipContent="Logout" placement="right" isHidden={!collapse}>
+					<Button className="p-0 m-0" onClick={handleLogout}>
+						<Box key="logout" className={!collapse ? responsiveClass.container : responsiveClass.iconsOnly}>
+							<img alt="collapse" src="/svg_icons/logout.svg" className={responsiveClass.icon} />
+							{!collapse ? <p className={responsiveClass.title}>logout</p> : null}
+						</Box>
+					</Button>
+				</TooltipWrapper>
 			</Stack>
 		</>
 	);

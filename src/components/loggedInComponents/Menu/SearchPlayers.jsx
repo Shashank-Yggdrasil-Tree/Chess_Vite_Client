@@ -1,13 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Input } from '@mui/material';
 import { useSearchPlayersQuery } from '../../../features/players/playersApiSlice';
 import PlayersList from './PlayersList';
+import { BreakpointContext } from '../../../BreakpointProvider';
 
 const SearchPlayers = () => {
 	const [players, setPlayers] = useState([]);
 	const [query, setQuery] = useState('');
 	const [skip, setSkip] = useState(true);
 	const [cachedResults, setCachedResults] = useState({});
+	const { xlBreakpoint, smBreakpoint } = useContext(BreakpointContext);
 
 	const {
 		data: searchResultsData,

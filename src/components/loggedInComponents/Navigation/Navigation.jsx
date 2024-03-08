@@ -11,7 +11,7 @@ const Navigation = ({ setCollapse, collapse }) => {
 	const { width, height } = useWindowDimensions();
 
 	useEffect(() => {
-		if (width <= 1250) {
+		if (width <= 1310) {
 			setCollapse(true);
 		} else {
 			setCollapse(false);

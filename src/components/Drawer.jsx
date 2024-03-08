@@ -81,7 +81,7 @@ function ResponsiveDrawer(props) {
 				{stockfishNavList.map(({ name, link }, index) => (
 					<ListItem key={index} disablePadding>
 						<Link to={link}>
-							<ListItemButton>
+							<ListItemButton onClick={name === 'Play Vs Friend' ? showToast : handleDrawerToggle}>
 								{/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}

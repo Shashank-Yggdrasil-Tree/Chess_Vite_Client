@@ -16,7 +16,7 @@ const PlayVsFriend = () => {
 
 	const responsiveClass = {
 		chessBoard:
-			'w-[100%] pb-18 md:pb-0 md:m-0 sm:w-[20em] md:w-[80%] lg:w-[80%] xl:w-[38rem] 2xl:w-[38rem] h-screen md:max-h-lg md:h-full grow flex justify-center items-center',
+			'w-[100%] pb-18 md:pb-0 md:m-0 sm:w-[80%] md:w-[80%] lg:w-[80%] xl:w-[38rem] 2xl:w-[38rem] max-w-[38rem] h-screen md:max-h-lg md:h-full grow flex justify-center items-center',
 	};
 
 	const content = (

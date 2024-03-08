@@ -57,7 +57,7 @@ const Form = ({ selectedTheme }) => {
 				<MessageInput register={register} selectedTheme={selectedTheme} />
 				<MessageSendBtn isDirty={isDirty} isValid={isValid} />
 			</form>
-			<DevTool control={control} />
+			{/* <DevTool control={control} /> */}
 		</>
 	);
 };

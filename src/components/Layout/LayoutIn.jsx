@@ -25,7 +25,7 @@ const LayoutIn = () => {
 		});
 	}, []);
 
-	const { xlBreakpoint, smBreakpoint } = useContext(BreakpointContext);
+	const { lgBreakpoint, smBreakpoint, mdBreakpoint } = useContext(BreakpointContext);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -91,13 +91,13 @@ const LayoutIn = () => {
 
 	const content = (
 		<>
-			<div className={`flex grow ${xlBreakpoint ? 'flex-col justify-center w-full' : 'flex-row'}`}>
-				<Box className={`flex flex-1 justify-center items-center grow w-full ${xlBreakpoint ? 'h-full' : 'h-screen'}`}>
+			<div className={`flex grow ${lgBreakpoint ? 'flex-col justify-center w-full' : 'flex-row'}`}>
+				<Box className={`flex flex-1 justify-center items-center grow w-full ${lgBreakpoint ? 'h-full' : 'h-screen'}`}>
 					{smBreakpoint ? mobileDisplayButtons : null}
 					<Outlet />
 				</Box>
-				{!xlBreakpoint ? (
-					<Box className="flex">
+				{!lgBreakpoint ? (
+					<Box className={`flex ${lgBreakpoint ? 'w-full justify-center' : null}`}>
 						<ResponsiveStack>
 							<Menu />
 						</ResponsiveStack>
@@ -121,7 +121,7 @@ const LayoutIn = () => {
 
 	return (
 		<>
-			<div className={`flex ${smBreakpoint ? 'h-full' : 'h-screen'}`}>
+			<div className={`flex ${lgBreakpoint ? 'h-full' : 'h-screen'}`}>
 				<NotificationMenu />
 				<div className={`flex-none bg-[#262522] ${responsiveNavClass}`}>{contentNav}</div>
 				<div className={`flex-1 bg-[#302e2b] h-full`}>{content}</div>

@@ -2,29 +2,35 @@ import React, { useEffect, useState } from 'react';
 import useWindowDimensions from './hooks/useWindowDimension';
 
 // Define your breakpoint values
-const xlBreakpointValue = 1250;
 const smBreakpointValue = 640;
+const mdBreakpointValue = 768;
+const lgBreakpointValue = 1024;
+const xlBreakpointValue = 1250;
+const xxlBreakpointValue = 1536;
 
 const BreakpointProvider = ({ children }) => {
-	const [xlBreakpoint, setXlBreakpoint] = useState(false);
-	const [smBreakpoint, setSmBreakpoint] = useState(false);
 	const { width } = useWindowDimensions();
+	const [breakpoints, setBreakpoints] = useState({
+		xxlBreakpoint: false,
+		xlBreakpoint: false,
+		lgBreakpoint: false,
+		mdBreakpoint: false,
+		smBreakpoint: false,
+	});
 
 	useEffect(() => {
-		if (width <= xlBreakpointValue) {
-			setXlBreakpoint(true);
-		} else {
-			setXlBreakpoint(false);
-		}
+		const updatedBreakpoints = {
+			xxlBreakpoint: width <= xxlBreakpointValue,
+			xlBreakpoint: width <= xlBreakpointValue,
+			lgBreakpoint: width <= lgBreakpointValue,
+			mdBreakpoint: width <= mdBreakpointValue,
+			smBreakpoint: width < smBreakpointValue,
+		};
 
-		if (width <= smBreakpointValue) {
-			setSmBreakpoint(true);
-		} else {
-			setSmBreakpoint(false);
-		}
+		setBreakpoints(updatedBreakpoints);
 	}, [width]);
 
-	return <BreakpointContext.Provider value={{ xlBreakpoint, smBreakpoint }}>{children}</BreakpointContext.Provider>;
+	return <BreakpointContext.Provider value={breakpoints}>{children}</BreakpointContext.Provider>;
 };
 
 export const BreakpointContext = React.createContext();

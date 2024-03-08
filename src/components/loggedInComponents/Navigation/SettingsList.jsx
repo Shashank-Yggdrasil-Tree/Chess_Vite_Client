@@ -52,7 +52,7 @@ const SettingsList = ({ collapse, setCollapse }) => {
 				))}
 
 				<TooltipWrapper tooltipContent="Logout" placement="right" isHidden={!collapse}>
-					<Button className="p-0 m-0" onClick={handleLogout}>
+					<Button className="p-0 m-0 min-w-11" onClick={handleLogout}>
 						<Box key="logout" className={!collapse ? responsiveClass.container : responsiveClass.iconsOnly}>
 							<img alt="collapse" src="/svg_icons/logout.svg" className={responsiveClass.icon} />
 							{!collapse ? <p className={responsiveClass.title}>logout</p> : null}

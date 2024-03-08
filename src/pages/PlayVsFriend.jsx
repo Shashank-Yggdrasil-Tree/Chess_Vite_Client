@@ -21,18 +21,18 @@ const PlayVsFriend = () => {
 
 	const content = (
 		<Stack className="grow h-full w-full">
-			<Box className="grow h-full w-full">
+			{/* <Box className="grow h-full w-full">
 				<Game responsiveClass={responsiveClass.chessBoard} />
-			</Box>
-			{/* <h1 className="text-white">{welcome}</h1>
-			<p className="text-white">Token: {tokenAbbr}</p> */}
-			{/* {room ? (
-			 ) : (
-			 	<Box className="grow h-full w-full">
-			 		<Game responsiveClass={responsiveClass.chessBoard} />
-			 		 <ResponsiveChessBoard styled customClassName={responsiveClass.chessBoard} /> 
-			 	</Box>
-			 )} */}
+			</Box> */}
+			<h1 className="text-white">{welcome}</h1>
+			{/* <p className="text-white">Token: {tokenAbbr}</p> */}
+			{room ? (
+				<Game responsiveClass={responsiveClass.chessBoard} />
+			) : (
+				<Stack className="grow h-full w-full flex justify-center items-center">
+					<ResponsiveChessBoard customClassName={responsiveClass.chessBoard} />
+				</Stack>
+			)}
 		</Stack>
 	);
 

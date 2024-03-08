@@ -8,7 +8,7 @@ import OnlineFriendsHeading from './OnlineFriendsHeading';
 import { BreakpointContext } from '../../../BreakpointProvider';
 
 const FriendSection = () => {
-	const { xlBreakpoint, smBreakpoint } = useContext(BreakpointContext);
+	const { smBreakpoint } = useContext(BreakpointContext);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {

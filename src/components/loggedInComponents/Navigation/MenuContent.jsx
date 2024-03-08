@@ -1,18 +1,14 @@
+import { Box } from '@mui/material';
+import ChallengeList from '../Challenges/ChallengeList';
 import { useEffect, useState } from 'react';
-import { Box, Button, Stack } from '@mui/material';
 import socket from '../../../socket';
-import { useDispatch } from 'react-redux';
-import { setOrientation, setPlayers, setRoom } from '../../../features/gameSlice';
 
 const MenuContent = ({ isMenuVisible, setIsMenuVisible, collapse, setCollapse }) => {
 	const [challenges, setChallenges] = useState([]);
-	const [roomError, setRoomError] = useState('');
-
-	const dispatch = useDispatch();
 
 	useEffect(() => {
-		socket.on('challenge', (roomId) => {
-			setChallenges((prevChallenges) => [...prevChallenges, roomId]);
+		socket.on('challenge', ({ roomId, challenger }) => {
+			setChallenges((prevChallenges) => [...prevChallenges, { roomId, challenger }]);
 		});
 	}, []);
 
@@ -29,25 +25,7 @@ const MenuContent = ({ isMenuVisible, setIsMenuVisible, collapse, setCollapse })
 					onMouseLeave={() => setIsMenuVisible(false)}
 					onMouseEnter={() => setIsMenuVisible(true)}
 				>
-					{challenges.map((challenge) => (
-						<>
-							<Button
-								onClick={() => {
-									// Join a room
-									socket.emit('joinRoom', { roomId: challenge }, (r) => {
-										// r is the response from the server
-										if (r.error) return setRoomError(r.message); // if an error is returned in the response set roomError to the error message and exit
-										dispatch(setRoom(r?.roomId));
-										dispatch(setPlayers(r?.players));
-										dispatch(setOrientation('black'));
-										// setIsMenuVisible(false)
-									});
-								}}
-							>
-								Accept Challenge
-							</Button>
-						</>
-					))}
+					<ChallengeList challenges={challenges} setChallenges={setChallenges} />
 				</Box>
 			) : null}
 		</>

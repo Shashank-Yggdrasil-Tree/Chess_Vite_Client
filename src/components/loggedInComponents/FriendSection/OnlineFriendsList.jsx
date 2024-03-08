@@ -10,7 +10,7 @@ import SkeletonLoading from '../../../common/SkeletonLoading';
 
 const OnlineFriendsList = () => {
 	const username = useSelector(selectCurrentUser);
-	const { data: friendsStatusData, isLoading, isSuccess, isError } = useGetAllFriendsStatusQuery({ username });
+	const { data: friendsStatusData, isLoading } = useGetAllFriendsStatusQuery({ username });
 
 	// useEffect(() => {}, [friendsStatusData]);
 	const statusArray = friendsStatusData?.length > 0 ? friendsStatusData : [];

@@ -141,7 +141,7 @@ function Game({ responsiveClass }) {
 				title={over}
 				contentText={over}
 				handleContinue={() => {
-					// setOver("");
+					// setOver('');
 					socket.emit('closeRoom', { roomId: room });
 					cleanup();
 				}}

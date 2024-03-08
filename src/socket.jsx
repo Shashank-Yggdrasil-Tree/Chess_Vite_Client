@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
+import { BASE_URL } from './constants/constants';
 
-// const socket = io('https://chess-server.adaptable.app/api'); // initialize websocket connection
-const socket = io('192.168.253.140:4242'); // initialize wsebsocket connection
+const socket = io(BASE_URL); // initialize wsebsocket connection
 
 export default socket;

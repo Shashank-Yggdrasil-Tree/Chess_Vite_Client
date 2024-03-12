@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Paper, Stack } from '@mui/material';
 
@@ -13,10 +13,12 @@ import CommonBoxWrapper from '../../common/CommonBoxWrapper';
 import Messages from './Messages';
 import Form from './Form';
 import MenuWrapper from '../loggedInComponents/FriendSection/Utilities/MenuWrapper';
+import { BreakpointContext } from '../../BreakpointProvider';
 // import { useGetUsersQuery } from '../../features/auth/authApiSlice';
 
 const ChatWindow = () => {
 	// const { data, isLoading, isError, isSuccess } = useGetUsersQuery();
+	const { mdBreakpoint } = useContext(BreakpointContext);
 	const room = useSelector((state) => state.game.room);
 	const [themeColor, setThemeColor] = useState('blue');
 	const [anchorEl, setAnchorEl] = useState(null);
@@ -97,7 +99,9 @@ const ChatWindow = () => {
 	const themeColors = ['green', 'sky', 'red', 'amber'];
 
 	return (
-		<CommonBoxWrapper additional_class={`relative h-full p-5 ${!room ? 'max-h-[35em]' : 'max-h-96'}`}>
+		<CommonBoxWrapper
+			additional_class={`relative p-5 ${!room ? 'max-h-full' : 'max-h-96'} ${mdBreakpoint ? 'h-[35em]' : 'h-full'}`}
+		>
 			<MenuWrapper
 				anchorEl={anchorEl}
 				handleClose={handleClose}

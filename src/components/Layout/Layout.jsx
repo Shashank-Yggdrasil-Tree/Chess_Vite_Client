@@ -7,7 +7,7 @@ import ResponsiveDrawer from '../Drawer';
 import { BreakpointContext } from '../../BreakpointProvider';
 
 const Layout = () => {
-	const { mdBreakpoint, lgBreakpoint } = useContext(BreakpointContext);
+	const { mdBreakpoint, smBreakpointValue } = useContext(BreakpointContext);
 
 	return (
 		<Stack
@@ -16,12 +16,25 @@ const Layout = () => {
 			<Box
 				className={`flex h-full w-full bg-black bg-opacity-60 backdrop-blur-[3px] ${mdBreakpoint ? 'flex-col' : null}`}
 			>
-				<Box className={`flex-none md:flex-1`}>
-					<ResponsiveDrawer />
-				</Box>
-				<Box className="flex-1 flex items-center h-screen grow">
-					<Outlet />
-				</Box>
+				{smBreakpointValue ? (
+					<>
+						<Box className={`flex-1 flex items-center h-screen grow  ${mdBreakpoint ? 'min-h-screen' : null}`}>
+							<Box className={`absolute top-0 left-0`}>
+								<ResponsiveDrawer />
+							</Box>
+							<Outlet />
+						</Box>
+					</>
+				) : (
+					<>
+						<Box className={`flex-none md:flex-1`}>
+							<ResponsiveDrawer />
+						</Box>
+						<Box className={`flex-1 flex items-center h-screen grow  ${mdBreakpoint ? 'min-h-screen' : null}`}>
+							<Outlet />
+						</Box>
+					</>
+				)}
 				<Stack className={`flex-1`}>
 					<Box>
 						<Login />

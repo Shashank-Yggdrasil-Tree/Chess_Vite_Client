@@ -25,8 +25,8 @@ dist-ssr
 
 *.text
 
-# *.svg
-# *.mp4
-# *.gitignore
-# *.webp
-# *.png
+*.svg
+*.mp4
+*.gitignore
+*.webp
+*.png

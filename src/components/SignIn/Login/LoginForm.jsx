@@ -47,7 +47,7 @@ const LoginForm = () => {
 			dispatch(setCredentials({ ...payload, user: data.username }));
 			socket.emit('username', data.username);
 			reset();
-			toast.success('🦄 Wow so easy!', TOAST_CONFIG);
+			toast.success(`🦄 Welcome! ${data.username}`, TOAST_CONFIG);
 			navigate(from, { replace: true });
 		} catch (err) {
 			if (!err?.originalStatus) {

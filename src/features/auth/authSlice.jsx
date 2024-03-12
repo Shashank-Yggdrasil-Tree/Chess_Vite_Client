@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { authApiSlice } from './authApiSlice';
 
 const initialState = {
-	user: null,
+	user: '',
 	token: null,
 	auth: {},
 	persist: JSON.parse(localStorage.getItem('persist')) || false,

@@ -4,7 +4,6 @@ const initialState = {
 	room: '', // it's just the room ID.
 	orientation: '',
 	players: [], //has objects with player_id and username
-	username: '',
 };
 
 export const gameSlice = createSlice({
@@ -24,13 +23,10 @@ export const gameSlice = createSlice({
 		setPlayers: (state, action) => {
 			state.players = [...action.payload];
 		},
-		setUsername: (state, action) => {
-			state.username = action.payload;
-		},
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const { setRoom, setOrientation, setPlayers, setUsername } = gameSlice.actions;
+export const { setRoom, setOrientation, setPlayers } = gameSlice.actions;
 
 export default gameSlice.reducer;

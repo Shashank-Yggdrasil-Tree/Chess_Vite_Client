@@ -6,6 +6,8 @@ export default {
 			backgroundImage: {
 				// 'hero-pattern': "url('/svg_background/spring.svg')",
 				'hero-pattern': "url('/svg_background/spring_black.svg')",
+				'mobile-wallpaper': "url('/svg_background/bg_chess.jpg')",
+				'mobile-wallpaper1': "url('/svg_background/bg_chess1.jpg')",
 				// "hero-pattern": "url('/svg_background/clouds.svg')",
 			},
 			fontFamily: {

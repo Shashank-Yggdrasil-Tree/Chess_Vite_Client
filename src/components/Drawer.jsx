@@ -43,7 +43,7 @@ function ResponsiveDrawer(props) {
 
 	const drawer = (
 		<div>
-			<List className="lg:h-[32rem] md:h-[20rem] overflow-y-scroll overflow-x-hidden scrollbar-effect divide-y divide-zinc-800">
+			<List className="lg:h-[32rem] md:h-[20rem] overflow-y-auto overflow-x-hidden scrollbar-effect divide-y divide-zinc-800">
 				{stockfishNavList.map(({ name, link }, index) => (
 					<ListItem
 						key={index}
@@ -77,7 +77,7 @@ function ResponsiveDrawer(props) {
 
 	const mobile_drawer = (
 		<div>
-			<List className="h-dhv my-5 overflow-y-scroll">
+			<List className="h-dhv my-5 overflow-y-auto">
 				{stockfishNavList.map(({ name, link }, index) => (
 					<ListItem key={index} disablePadding>
 						<Link to={link}>

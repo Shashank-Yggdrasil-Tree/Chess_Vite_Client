@@ -1,15 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	message: [
-		{
-			id: 0,
-			username: '',
-			text: '',
-			// timestamp: 0,
-			// status: "",
-		},
-	],
+	message: [],
 };
 
 export const chatSlice = createSlice({
@@ -19,9 +11,12 @@ export const chatSlice = createSlice({
 		addMessage: (state, action) => {
 			state.message = [...state.message, action.payload];
 		},
+		setMessages: (state, action) => {
+			state.message = [...action.payload];
+		},
 	},
 });
 
-export const { addMessage } = chatSlice.actions;
+export const { addMessage, setMessages } = chatSlice.actions;
 
 export default chatSlice.reducer;

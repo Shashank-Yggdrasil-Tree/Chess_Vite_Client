@@ -35,12 +35,12 @@ const FriendRequestList = () => {
 
 	return (
 		<>
-			<Box className="bg-[#211f1c] h-10 mb-2 p-2 text-[#c3c2c1] text-nowrap flex justify-between">
+			<Box className="bg-[#211f1c] h-10 mb-2 p-2 text-[#c3c2c1] text-nowrap flex justify-between items-center">
 				<h1>Friend Request Sent</h1>
 				<RefetchButton
 					tooltipContent="Refresh"
 					placement="left"
-					classNames="min-h-2 w-2 min-w-2 bg-[#32312f] hover:bg-[#454441] bg-opacity-50 hover:bg-opacity-100"
+					classNames="h-full px-4 py-1 w-2 min-w-2 bg-[#32312f] hover:bg-[#454441] bg-opacity-50 hover:bg-opacity-100"
 					variants="contained"
 					styles={{
 						backdropFilter: 'blur(10px)',

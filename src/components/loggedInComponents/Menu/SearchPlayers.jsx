@@ -74,7 +74,7 @@ const SearchPlayers = () => {
 					className="text-white bg-[#3c3b39] mb-2 w-full p-2 rounded caret-white"
 					pattern="/^[a-z][a-z0-9_\-]{0,34}$/"
 				/>
-				<Box className="overflow-y-scroll no-scrollbar h-full">
+				<Box className="overflow-y-auto no-scrollbar h-full">
 					<PlayersList
 						players={players}
 						isSearchResultSuccess={isSearchResultSuccess}

@@ -7,12 +7,14 @@ import { DevTool } from '@hookform/devtools';
 import MessageSendBtn from './MessageSendBtn';
 import MessageInput from './MessageInput';
 import Messages from './Messages';
+import { selectCurrentUser } from '../../features/auth/authSlice';
 
 let renderCount = 0;
 
 // UncontrolledForm
 const Form = ({ selectedTheme }) => {
-	const { username: senderUsername, room } = useSelector((state) => state.game);
+	const username = useSelector(selectCurrentUser);
+	const room = useSelector((state) => state.game.room); //just an roomId
 
 	const form = useForm();
 	const { register, control, handleSubmit, formState, reset } = form;
@@ -26,7 +28,7 @@ const Form = ({ selectedTheme }) => {
 			socket.emit(
 				'message',
 				{
-					username: senderUsername,
+					username,
 					messageText: message,
 					roomId: room,
 				},
@@ -37,7 +39,7 @@ const Form = ({ selectedTheme }) => {
 			);
 			reset();
 		},
-		[dispatch, senderUsername, room]
+		[dispatch, username, room]
 	);
 
 	const onError = (errors) => {

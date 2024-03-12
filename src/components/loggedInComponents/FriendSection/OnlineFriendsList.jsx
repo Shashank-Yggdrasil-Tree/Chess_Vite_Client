@@ -20,7 +20,7 @@ const OnlineFriendsList = () => {
 
 	const Layout = ({ children }) => {
 		return (
-			<Box className="flex justify-start w-full items-start h-full p-2 bg-[#262522] overflow-y-scroll max-h-[42%] no-scrollbar">
+			<Box className="flex justify-start w-full items-start h-full p-2 bg-[#262522] overflow-y-auto max-h-[42%] no-scrollbar">
 				{children}
 			</Box>
 		);
@@ -34,13 +34,13 @@ const OnlineFriendsList = () => {
 		);
 	}
 
-	const onlyFriends = statusArray.filter((obj) => obj.status === 'friends');
+	const Friends = statusArray.filter((obj) => obj.status === 'friends');
 
 	return (
 		<>
 			{!isLoading ? (
 				<Layout>
-					<OnlineFriendsListItems statusArray={onlyFriends} />
+					<OnlineFriendsListItems statusArray={Friends} />
 				</Layout>
 			) : (
 				<SkeletonLoading num={5} ch={20} cw={20} rh={15} rw={100} />

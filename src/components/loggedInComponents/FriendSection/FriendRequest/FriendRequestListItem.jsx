@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import SkeletonLoading from '../../../../common/SkeletonLoading';
 import FriendRequestButtons from './FriendRequestButtons';
-import { Avatar, Box, MenuItem } from '@mui/material';
+import { Avatar, Box, MenuItem, Stack } from '@mui/material';
 import { randomFaces } from '../../../../common/randomFaces';
 
 const FriendRequestListItem = ({ status = '', altMsg = '', friendsStatusData, isLoading }) => {
@@ -27,7 +27,7 @@ const FriendRequestListItem = ({ status = '', altMsg = '', friendsStatusData, is
 						statusArray.map((item) =>
 							item?.status === status ? (
 								<li key={item._id} className="text-[#c3c2c1]">
-									<MenuItem className="gap-12">
+									<Stack direction="row" className="gap-12 px-2 mb-2 justify-between">
 										<Box className="gap-2 flex items-center">
 											<Avatar alt="Remy Sharp" src={randomFaces()} />
 											<p className="user-username-component capitalize">{item?.friendId?.username}</p>
@@ -35,7 +35,7 @@ const FriendRequestListItem = ({ status = '', altMsg = '', friendsStatusData, is
 										<Box className="gap-2 flex">
 											<FriendRequestButtons status={status} friendsUsername={item?.friendId?.username} />
 										</Box>
-									</MenuItem>
+									</Stack>
 								</li>
 							) : null
 						)

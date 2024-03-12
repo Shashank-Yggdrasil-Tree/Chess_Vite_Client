@@ -6,7 +6,7 @@ import ChallengeButton from '../../Game/ChallengeButton';
 const FriendsFeatures = ({ friendsUsername }) => {
 	return (
 		<>
-			<Box className="gap-x-2 flex">
+			<Box className="gap-x-2 flex p-2 bg-[#21201d]">
 				<CancelButton helperText="Unfriend" bgColor="bg-red-500" friendsUsername={friendsUsername} />
 				<ChallengeButton
 					challengee={friendsUsername}

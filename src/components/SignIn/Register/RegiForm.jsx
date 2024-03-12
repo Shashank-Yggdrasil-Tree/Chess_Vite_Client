@@ -47,7 +47,7 @@ const RegiForm = () => {
 			if (userData.userCreated) {
 				socket.emit('username', data.username);
 				reset();
-				toast.success('🦄 Wow so easy!', TOAST_CONFIG);
+				toast.success(`🦄 Thanks for joining ${data.username}`, TOAST_CONFIG);
 				toast.success('User has been successfully created. Please Login', TOAST_CONFIG);
 			}
 		} catch (err) {

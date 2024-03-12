@@ -1,0 +1,15 @@
+.dynamic-color-green {
+	background-color: #22c55e;
+}
+
+.dynamic-color-sky {
+	background-color: #0ea5e9;
+}
+
+.dynamic-color-amber {
+	background-color: #f59e0b; /* Tailwind's bg-amber-500 */
+}
+
+.dynamic-color-red {
+	background-color: #ef4444; /* Tailwind's bg-red-500 */
+}

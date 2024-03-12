@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Paper, Stack } from '@mui/material';
+
+import './dynamicStyles.css';
 
 import classNames from 'classnames';
 import TooltipWrapper from '../../common/TooltipWrapper';
@@ -15,6 +17,7 @@ import MenuWrapper from '../loggedInComponents/FriendSection/Utilities/MenuWrapp
 
 const ChatWindow = () => {
 	// const { data, isLoading, isError, isSuccess } = useGetUsersQuery();
+	const room = useSelector((state) => state.game.room);
 	const [themeColor, setThemeColor] = useState('blue');
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
@@ -94,7 +97,7 @@ const ChatWindow = () => {
 	const themeColors = ['green', 'sky', 'red', 'amber'];
 
 	return (
-		<CommonBoxWrapper additional_class="relative h-full p-5 max-h-[35em]">
+		<CommonBoxWrapper additional_class={`relative h-full p-5 ${!room ? 'max-h-[35em]' : 'max-h-96'}`}>
 			<MenuWrapper
 				anchorEl={anchorEl}
 				handleClose={handleClose}
@@ -106,11 +109,16 @@ const ChatWindow = () => {
 						{themeColors.map((color) => (
 							<Button
 								key={color}
-								className={`capitalize bg-black hover:bg-${color}-500 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 justify-start gap-2 mb-2 mx-2`}
+								className={`capitalize bg-black hover:bg-dynamic-color-${color} active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 justify-start gap-2 mb-2 mx-2 transition ease-in-out hover:scale-110 duration-150`}
+								sx={{
+									'&:hover': {
+										backgroundColor: `dynamic-color-${color} !important`,
+									},
+								}}
 								variant="contained"
 								onClick={() => setThemeColor(color)}
 							>
-								<Box className={`bg-${color}-500 p-2 my-1 rounded`}>
+								<Box className={`dynamic-color-${color} p-2 my-1 rounded`}>
 									<Paper elevation={3} />
 								</Box>
 								{color}

@@ -11,7 +11,7 @@ const Layout = () => {
 
 	return (
 		<Stack
-			className={`bg-hero-pattern bg-no-repeat bg-center bg-cover w-screen ${mdBreakpoint ? 'h-full' : 'h-screen'}`}
+			className={`bg-no-repeat bg-center bg-cover w-screen ${mdBreakpoint ? 'h-full bg-mobile-wallpaper1' : 'h-screen bg-hero-pattern'}`}
 		>
 			<Box
 				className={`flex h-full w-full bg-black bg-opacity-60 backdrop-blur-[3px] ${mdBreakpoint ? 'flex-col' : null}`}

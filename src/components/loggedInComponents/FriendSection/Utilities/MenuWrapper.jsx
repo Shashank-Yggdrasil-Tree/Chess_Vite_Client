@@ -19,7 +19,6 @@ const MenuWrapper = ({
 			anchorOrigin={anchorOrigin}
 			onClose={handleClose}
 			children={children}
-			// style={{ backdropFilter: 'blur(1000px)' }}
 		></Menu>
 	);
 };

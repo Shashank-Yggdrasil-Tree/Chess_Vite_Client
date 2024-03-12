@@ -29,6 +29,19 @@ body {
 		transform: translate(-50%, -50%);
 	}
 
+	/* .dynamic-color-green {
+		@apply bg-green-500;
+	}
+	.dynamic-color-sky {
+		@apply bg-sky-500;
+	}
+	.dynamic-color-amber {
+		@apply bg-amber-500;
+	}
+	.dynamic-color-red {
+		@apply bg-red-500;
+	} */
+
 	@keyframes underlineAnimation {
 		0% {
 			transform: scaleX(0);

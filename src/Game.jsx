@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setRoom, setOrientation, setPlayers } from './features/gameSlice.jsx';
 import ResponsiveChessBoard from './components/ResponsiveChessBoard.jsx';
 import { selectCurrentToken, selectCurrentUser } from './features/auth/authSlice.jsx';
+import { setMessages } from './features/chatSlice.jsx';
 
 function Game({ responsiveClass }) {
 	const token = useSelector(selectCurrentToken);
@@ -31,6 +32,7 @@ function Game({ responsiveClass }) {
 		dispatch(setRoom(''));
 		dispatch(setOrientation(''));
 		dispatch(setPlayers([]));
+		dispatch(setMessages([]));
 	}, []);
 
 	const chess = useMemo(() => new Chess(), []);

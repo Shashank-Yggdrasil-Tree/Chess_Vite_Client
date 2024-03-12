@@ -37,7 +37,7 @@ const MenuTabs = ({ tabOneComponent = defaultTab, tabTwoComponent = defaultTab, 
 							<Tab icon={<PeopleIcon />} label="Players" value="3" className="flex-1 text-white text-xs normal-case" />
 						</TabList>
 					</Box>
-					<TabPanel value="1" className="h-full max-h-full overflow-y-scroll no-scrollbar">
+					<TabPanel value="1" className="h-full max-h-full overflow-y-auto no-scrollbar">
 						{tabOneComponent}
 					</TabPanel>
 					<TabPanel value="2">{tabTwoComponent}</TabPanel>

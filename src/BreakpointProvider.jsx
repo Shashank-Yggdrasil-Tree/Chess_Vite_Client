@@ -24,7 +24,7 @@ const BreakpointProvider = ({ children }) => {
 			xlBreakpoint: width <= xlBreakpointValue,
 			lgBreakpoint: width <= lgBreakpointValue,
 			mdBreakpoint: width <= mdBreakpointValue,
-			smBreakpoint: width < smBreakpointValue,
+			smBreakpoint: width <= smBreakpointValue,
 		};
 
 		setBreakpoints(updatedBreakpoints);

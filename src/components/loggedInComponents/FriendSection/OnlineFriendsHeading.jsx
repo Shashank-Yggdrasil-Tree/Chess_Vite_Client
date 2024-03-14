@@ -1,4 +1,4 @@
-import { Box, IconButton } from '@mui/material';
+import { Badge, Box, IconButton } from '@mui/material';
 import React from 'react';
 import TooltipWrapper from '../../../common/TooltipWrapper';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -13,7 +13,17 @@ const OnlineFriendsHeading = ({ handleClick }) => {
 						onClick={handleClick}
 						className="text-white min-w-0 m-0 p-0 rounded transform transition-transform duration-200 ease-in-out hover:scale-125 hover:bg-green-800 bg-[#262522] p-1"
 					>
-						<NotificationsIcon />
+						<Badge
+							badgeContent={4}
+							color="primary"
+							max={999}
+							anchorOrigin={{
+								vertical: 'bottom',
+								horizontal: 'right',
+							}}
+						>
+							<NotificationsIcon />
+						</Badge>
 					</IconButton>
 				</TooltipWrapper>
 			</Box>

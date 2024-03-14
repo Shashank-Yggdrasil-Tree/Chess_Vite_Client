@@ -1,5 +1,5 @@
 import { Avatar, Box, Button } from '@mui/material';
-import { StyledBadge } from '../../../common/StyledBadge';
+import { OnlineBadge } from '../../../common/OnlineBadge';
 import { randomFaces } from '../../../common/randomFaces';
 import MenuWrapper from './Utilities/MenuWrapper';
 import FriendsFeatures from '../FriendSection/FriendFeatures/FriendsFeatures';
@@ -34,18 +34,18 @@ const OnlineFriendsListItems = ({ statusArray }) => {
 						}}
 						onClick={handleClick}
 					>
-						<StyledBadge
+						<OnlineBadge
 							overlap="circular"
 							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 							variant="dot"
-							className="select-none pointer-events-none "
+							className="select-none pointer-events-none"
 						>
 							<Avatar
 								alt={item.friendId.username}
 								src={randomFaces()}
 								className="select-none pointer-events-none w-8 h-8"
 							/>
-						</StyledBadge>
+						</OnlineBadge>
 						<p className="capitalize select-none pointer-events-none text-slate-100 text-md">
 							{item.friendId.username}
 						</p>

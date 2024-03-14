@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { toast } from 'react-toastify';
 import { TOAST_CONFIG } from '../../../constants/toast-config';

@@ -7,16 +7,20 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import BreakpointProvider from './BreakpointProvider';
+import theme from './theme.jsx';
+import { ThemeProvider } from '@mui/material';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	// <React.StrictMode>
-	<Provider store={store}>
-		<BreakpointProvider>
-			<BrowserRouter>
-				<App />
-				<ToastContainer></ToastContainer>
-			</BrowserRouter>
-		</BreakpointProvider>
-	</Provider>
-	// </React.StrictMode>
+	<React.StrictMode>
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<BreakpointProvider>
+					<BrowserRouter>
+						<App />
+						<ToastContainer></ToastContainer>
+					</BrowserRouter>
+				</BreakpointProvider>
+			</ThemeProvider>
+		</Provider>
+	</React.StrictMode>
 );

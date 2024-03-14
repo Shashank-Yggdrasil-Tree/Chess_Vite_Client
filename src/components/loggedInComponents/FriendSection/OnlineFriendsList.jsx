@@ -18,6 +18,8 @@ const OnlineFriendsList = () => {
 	// mix-blend-luminosity
 	const findFriendStatus = statusArray.find((item) => item?.status === 'friends');
 
+	console.log(findFriendStatus);
+
 	const Layout = ({ children }) => {
 		return (
 			<Box className="flex justify-start w-full items-start h-full p-2 bg-[#262522] overflow-y-auto max-h-[42%] no-scrollbar">

@@ -26,7 +26,7 @@ const TooltipWrapper = ({
 }) => {
 	return (
 		<HtmlTooltip
-			title={<>{isTextOnly ? <Typography color="inherit">{tooltipContent}</Typography> : { tooltipContent }}</>}
+			title={<>{isTextOnly ? <Typography color="inherit">{tooltipContent}</Typography> : tooltipContent}</>}
 			enterDelay={enterDelay}
 			leaveDelay={leaveDelay}
 			placement={placement}

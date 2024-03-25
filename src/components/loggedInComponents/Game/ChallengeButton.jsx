@@ -21,7 +21,7 @@ const ChallengeButton = ({ challengee, bgColourAndOpacity = 'bg-red-500 bg-opaci
 				onClick={() =>
 					socket.emit('createRoom', { challenger, challengee }, (r) => {
 						if (r.error) return;
-						console.log(r.m);
+						//console.log(r.m);
 						dispatch(setRoom(r));
 						dispatch(setOrientation('white'));
 					})

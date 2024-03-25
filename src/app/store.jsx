@@ -9,12 +9,15 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { apiSlice } from './api/apiSlice';
 import authReducer from '../features/auth/authSlice';
 
+import friendStatusReducer from '../features/friendStatusSlice';
+
 export const store = configureStore({
 	reducer: {
 		game: gameReducer,
 		// login: loginReducer,
 		chat: chatReducer,
 		auth: authReducer,
+		friendStatus: friendStatusReducer,
 
 		// [userApi.reducerPath]: userApi.reducer,
 		[apiSlice.reducerPath]: apiSlice.reducer,

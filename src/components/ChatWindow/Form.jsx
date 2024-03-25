@@ -33,7 +33,7 @@ const Form = ({ selectedTheme }) => {
 					roomId: room,
 				},
 				(r) => {
-					if (r.error) return; //console.log(r.m);
+					if (r.error) return; ////console.log(r.m);
 					dispatch(addMessage(r));
 				}
 			);
@@ -43,7 +43,7 @@ const Form = ({ selectedTheme }) => {
 	);
 
 	const onError = (errors) => {
-		//console.log(errors);
+		////console.log(errors);
 	};
 
 	renderCount++;

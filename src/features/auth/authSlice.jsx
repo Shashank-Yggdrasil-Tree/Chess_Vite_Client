@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authApiSlice } from './authApiSlice';
 
+// we can remove auth later.
+
 const initialState = {
 	user: '',
 	token: null,

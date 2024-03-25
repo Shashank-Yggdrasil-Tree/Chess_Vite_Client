@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
-import { LoadingButton } from '@mui/lab';
 import { Box } from '@mui/material';
-import RefreshIcon from '@mui/icons-material/Refresh';
 
 import { useGetAllFriendsStatusQuery } from '../../../../features/players/playersApiSlice';
 import { selectCurrentUser } from '../../../../features/auth/authSlice';
 
 import { R_PENDING_STATUS, SENT_PENDING_STATUS } from '../../../../common/Constants';
-import TooltipWrapper from '../../../../common/TooltipWrapper';
 import '../Utilities/GlobalCssMenu.css';
 
 import FriendRequestListItem from './FriendRequestListItem';
@@ -18,7 +14,7 @@ import RefetchButton from './RefetchButton';
 const FriendRequestList = () => {
 	const [loading, setLoading] = useState(false);
 	const username = useSelector(selectCurrentUser);
-	const { data: friendsStatusData, isLoading, isSuccess, isError, refetch } = useGetAllFriendsStatusQuery({ username });
+	const { data: friendsStatusData, isLoading, isSuccess, refetch } = useGetAllFriendsStatusQuery({ username });
 
 	useEffect(() => {
 		const loadingTimeout = setTimeout(() => {

@@ -17,7 +17,7 @@ const FriendRequestListItem = ({ status = '', altMsg = '', friendsStatusData, is
 
 	const statusArray = friendsStatusData?.length > 0 ? friendsStatusData : [];
 
-	console.log(friendsStatusData);
+	//console.log(friendsStatusData);
 
 	const content = (
 		<>

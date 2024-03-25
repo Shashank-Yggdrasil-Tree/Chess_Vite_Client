@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useWindowDimensions from './hooks/useWindowDimension';
 
+// need to refactor this code.
+
 // Define your breakpoint values
 const smBreakpointValue = 640;
 const mdBreakpointValue = 768;

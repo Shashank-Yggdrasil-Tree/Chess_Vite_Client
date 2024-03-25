@@ -29,7 +29,7 @@ const PlayersList = React.memo(({ players, isSearchResultFetching, isSearchResul
 	useEffect(() => {
 		if (isSendFriendRequestSuccess) {
 			toast.success(sendFriendRequestData.message, TOAST_CONFIG);
-			console.log('sendFriendRequestData.message: ', sendFriendRequestData.message);
+			// console.log('sendFriendRequestData.message: ', sendFriendRequestData.message);
 		}
 	}, [isSendFriendRequestSuccess]);
 

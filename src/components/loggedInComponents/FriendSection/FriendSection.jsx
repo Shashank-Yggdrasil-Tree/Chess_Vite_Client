@@ -1,44 +1,72 @@
-import React, { useContext, useState } from 'react';
-
-import FriendRequestList from './FriendRequest/FriendRequestList';
-import MenuWrapper from './Utilities/MenuWrapper';
+import React, { useEffect, useState } from 'react';
 import OnlineFriendsList from './OnlineFriendsList';
-import OnlineFriendsHeading from './OnlineFriendsHeading';
-
-import { BreakpointContext } from '../../../BreakpointProvider';
+import socket from '../../../socket';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../../features/auth/authSlice';
+import { selectCurrentFriends } from '../../../features/friendStatusSlice';
 import { useGetAllFriendsStatusQuery } from '../../../features/players/playersApiSlice';
+import { selectCurrentUser } from '../../../features/auth/authSlice';
+import useOnlineOfflineStatus from '../../../hooks/useOnlineOfflineStatus';
 
 const FriendSection = () => {
-	const { smBreakpoint, lgBreakpointValue } = useContext(BreakpointContext);
-	// const [friendsTotalCount, setFriendsTotalCount] = useState;
-	// const username = useSelector(selectCurrentUser);
-	// const { data: friendsStatusData, isLoading, isSuccess, isError, refetch } = useGetAllFriendsStatusQuery({ username });
-	const [anchorEl, setAnchorEl] = useState(null);
-	const open = Boolean(anchorEl);
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
+	const isOnline = useOnlineOfflineStatus();
+	const totalFriends = useSelector(selectCurrentFriends);
+	const currentFriends = totalFriends.reduce((acc, curr) => {
+		if (curr.friendId.username) {
+			acc.push({ username: curr.friendId.username });
+		}
+		return acc;
+	}, []);
+	const localSaveData = JSON.parse(localStorage.getItem('onlineFriends')) || [];
+	const [onlineFriends, setOnlineFriends] = useState(localSaveData || []);
+	const [offlineFriends, setOfflineFriends] = useState([]);
+	const username = useSelector(selectCurrentUser);
+	const { data } = useGetAllFriendsStatusQuery({ username }); // important to get the data.
 
-	return (
-		<>
-			<MenuWrapper anchorEl={anchorEl} handleClose={handleClose} open={open}>
-				<FriendRequestList />
-			</MenuWrapper>
-			<main
-				className={`bg-[#21201d] max-h-full h-full rounded-md justify-center ${!lgBreakpointValue ? 'm-4' : 'my-4 mr-3 max-w-20 w-20'}`}
-			>
-				<OnlineFriendsHeading handleClick={handleClick} />
-				<OnlineFriendsList />
-				{/* <OnlineFriendsHeading handleClick={handleClick} />
-				<OnlineFriendsList /> */}
-			</main>
-		</>
-	);
+	useEffect(() => {
+		if (!isOnline) {
+			socket.emit('online', username);
+		} else {
+			socket.emit('offline', username);
+		}
+	}, [isOnline, username]);
+
+	useEffect(() => {
+		const handleFriendOnlineStatus = ({ username, status }) => {
+			setOnlineFriends((prevOnlineFriends) => {
+				const duplicateUser = prevOnlineFriends.find((user) => user.username === username);
+				const findLocalUser = localSaveData.find((user) => user.username === username);
+
+				if (status === 'offline' && findLocalUser) {
+					const updatedFriendsData = localSaveData.filter((obj) => obj.username !== username);
+					localStorage.setItem('onlineFriends', JSON.stringify(updatedFriendsData));
+					return updatedFriendsData;
+				}
+
+				if (findLocalUser) {
+					return localSaveData;
+				}
+
+				if (!duplicateUser) {
+					localStorage.setItem('onlineFriends', JSON.stringify([...prevOnlineFriends, { username, status }]));
+					return [...prevOnlineFriends, { username, status }];
+				}
+
+				return localSaveData;
+			});
+		};
+
+		socket.on('friendOnlineStatus', handleFriendOnlineStatus);
+	}, []);
+
+	useEffect(() => {
+		setOfflineFriends(
+			currentFriends.filter(
+				(friend) => !onlineFriends.find((onlineFriend) => onlineFriend.username === friend.username)
+			)
+		);
+	}, [onlineFriends, totalFriends]);
+
+	return <OnlineFriendsList onlineFriends={onlineFriends} offlineFriends={offlineFriends} />;
 };
 
 export default FriendSection;

@@ -4,7 +4,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		login: builder.mutation({
 			query: (credentials) => ({
-				url: process.env.REACT_APP_LOGIN_PATH,
+				url: '/auth',
 				method: 'POST',
 				body: { ...credentials },
 			}),
@@ -12,14 +12,14 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		registerUser: builder.mutation({
 			query: (credentials) => ({
-				url: process.env.REACT_APP_REGISTER_PATH,
+				url: '/register',
 				method: 'POST',
 				body: { ...credentials },
 			}),
 		}),
 
 		logout: builder.query({
-			query: () => process.env.REACT_APP_LOGOUT_PATH,
+			query: () => '/logout',
 			keepUnusedDataFor: 1,
 		}),
 	}),

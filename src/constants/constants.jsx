@@ -1,2 +1,1 @@
-export const BASE_URL = 'https://chess-festival.onrender.com/';
-// export const BASE_URL = 'http://localhost:4242/';
+export const BASE_URL = process.env.REACT_APP_API_URL;

@@ -1,13 +1,41 @@
 import { Box, Stack } from '@mui/material';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ChatWindow from '../ChatWindow/ChatWindow';
 import Login from '../SignIn/Login';
 import { Outlet, useLocation } from 'react-router-dom';
 import ResponsiveDrawer from '../Drawer';
 import { BreakpointContext } from '../../BreakpointProvider';
+import { toast } from 'react-toastify';
 
 const Layout = () => {
 	const { mdBreakpoint, smBreakpoint } = useContext(BreakpointContext);
+
+	useEffect(() => {
+		const showToast = () => {
+			toast.info(
+				<>
+					Developer - "Thank you for visiting! Please wait and refresh this page after 50 seconds, as I am using a
+					free-tier server on Render, and it takes time to start their instance"
+					<br />
+					<br />
+					"And then, try logging in and have fun exploring!"
+				</>,
+				{
+					position: 'bottom-right',
+					autoClose: false,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: 'dark',
+					icon: false,
+				}
+			);
+		};
+
+		showToast();
+	}, []);
 
 	return (
 		<Stack

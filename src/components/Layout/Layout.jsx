@@ -14,11 +14,12 @@ const Layout = () => {
 		const showToast = () => {
 			toast.info(
 				<>
-					Developer - "Thank you for visiting! Please wait and refresh this page after 50 seconds, as I am using a
-					free-tier server on Render, and it takes time to start their instance"
+					Developer - "Thank you for visiting! Please wait or just try to log in once, If you do not see any toast like
+					this saying "Invalid Credentials" (or something similar) then just wait and refresh this page after 50
+					seconds, as I am using a free-tier server on Render, and it takes time to start their instance"
 					<br />
 					<br />
-					"And then, try logging in and have fun exploring!"
+					"And then, try creating a new account and have fun exploring!"
 				</>,
 				{
 					position: 'bottom-right',
